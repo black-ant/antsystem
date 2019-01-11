@@ -10,16 +10,11 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class UserManageController {
 
-    @Autowired
-    LoadBalancerClient loadBalancerClient;
-    @Autowired
-    RestTemplate restTemplate;
+
 
     @GetMapping("/userlist")
     public String dc() {
-        ServiceInstance serviceInstance = loadBalancerClient.choose("DATAUSER");
-        String url = "http://" + serviceInstance.getHost() + ":" + serviceInstance.getPort() + "/platform/getUserAll";
-        System.out.println(url);
-        return restTemplate.getForObject(url, String.class);
+
+        return "";
     }
 }
