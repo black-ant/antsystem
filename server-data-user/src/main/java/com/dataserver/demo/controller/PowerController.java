@@ -1,0 +1,8 @@
+package com.dataserver.demo.controller;
+
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class PowerController {
+}
