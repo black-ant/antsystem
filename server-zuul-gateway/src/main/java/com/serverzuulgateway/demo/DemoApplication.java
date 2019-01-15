@@ -1,8 +1,10 @@
 package com.serverzuulgateway.demo;
 
+import com.serverzuulgateway.demo.filter.PermisFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @EnableZuulProxy
@@ -12,5 +14,10 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
     }
 
+
+    @Bean
+    PermisFilter permisFilter() {
+        return new PermisFilter();
+    }
 }
 
