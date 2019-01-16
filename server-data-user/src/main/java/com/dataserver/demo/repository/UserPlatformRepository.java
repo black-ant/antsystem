@@ -1,9 +1,9 @@
 package com.dataserver.demo.repository;
 
-import com.dataserver.demo.entity.UserPlatform;
+import com.dataserver.demo.entity.UserPlatformEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserPlatformRepository extends JpaRepository<UserPlatform,Long> {
+public interface UserPlatformRepository extends JpaRepository<UserPlatformEntity,Long> {
 
 
 }

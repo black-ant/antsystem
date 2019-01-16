@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: api-gateway
+server:
+  port: 2006
+zuul:
+  routes:
+    server-datauser:
+      path: /api-datauser/**
+      serviceId: datauser
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1101/eureka/

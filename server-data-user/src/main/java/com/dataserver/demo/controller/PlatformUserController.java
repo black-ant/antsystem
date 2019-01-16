@@ -1,7 +1,7 @@
 package com.dataserver.demo.controller;
 
 
-import com.dataserver.demo.entity.UserPlatform;
+import com.dataserver.demo.entity.UserPlatformEntity;
 import com.dataserver.demo.service.UserPlatformService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -28,8 +28,8 @@ public class PlatformUserController {
     }
 
     @GetMapping("getUserAll")
-    public  List<UserPlatform>  getAllUser() {
-        List<UserPlatform> userList = userService.getAllUser();
+    public  List<UserPlatformEntity>  getAllUser() {
+        List<UserPlatformEntity> userList = userService.getAllUser();
         return userList;
     }
 }
