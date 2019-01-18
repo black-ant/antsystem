@@ -1,6 +1,7 @@
 package com.serverauthcenter.demo.repository;
 
 import com.serverauthcenter.demo.entity.UserSummaryEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * @author 10169
@@ -11,4 +12,6 @@ import com.serverauthcenter.demo.entity.UserSummaryEntity;
 public interface UserSummaryRepository extends JpaRepository<UserSummaryEntity,Long> {
 
     public UserSummaryEntity findByUserid(String userid);
+
+    public UserSummaryEntity findByUsername(String username);
 }

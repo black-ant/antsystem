@@ -1,8 +1,14 @@
 package com.serverauthcenter.demo.entity;
 
-import java.beans.Transient;
+import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author 10169
@@ -13,12 +19,12 @@ import java.util.List;
 
 @Data
 @Entity(name="user_summary")
-public class UserSummaryEntity implements UserDetails{
+public class UserSummaryEntity implements UserDetails {
 
     @Id
     @GeneratedValue
     private Long sn;
-    private Long useid;
+    private Long userid;
     private String username;
     private String userfrom;
     private String userstatus;
@@ -26,14 +32,26 @@ public class UserSummaryEntity implements UserDetails{
     private List<UserRolesEntity> userroles;
     @Transient
     private Set<GrantedAuthority> authorities = new HashSet<>();
+
+
     public Set<GrantedAuthority> getAuthorities() {
         Set<GrantedAuthority> authorities = new HashSet<>();
-        for (Role role : this.roles) {
-            for (Authority authority : role.getAuthorities()) {
+        for (UserRolesEntity role : this.userroles) {
+            for (AuthorityEntity authority : role.getAuthorities()) {
                 authorities.add(new SimpleGrantedAuthority(authority.getValue()));
             }
         }
         return authorities;
+    }
+
+    @Override
+    public String getPassword() {
+        return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
     }
 
     @Override

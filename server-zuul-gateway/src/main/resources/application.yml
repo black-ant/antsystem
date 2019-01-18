@@ -1,14 +1,33 @@
 spring:
   application:
     name: api-gateway
+
 server:
   port: 2006
+
+
 zuul:
   routes:
     server-datauser:
       path: /api-datauser/**
       serviceId: datauser
+    uaa:
+          path: /uaa/**
+          sensitiveHeaders: "*"
+          serviceId: auth-service
+  add-proxy-headers: true
+
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:1101/eureka/
+
+security:
+  oauth2:
+    client:
+      access-token-uri: http://localhost:${server.port}/uaa/oauth/token
+      user-authorization-uri: http://localhost:${server.port}/uaa/oauth/authorize
+      client-id: webapp
+    resource:
+      user-info-uri: http://localhost:${server.port}/uaa/user
+      prefer-token-info: false
