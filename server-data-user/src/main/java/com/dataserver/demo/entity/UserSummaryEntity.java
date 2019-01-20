@@ -20,11 +20,21 @@ public class UserSummaryEntity {
     @Id
     @GeneratedValue
     private Long sn;
-    private Long useid;
+    private int userid;
     private String username;
+    private String password;
     private String userfrom;
     private String userstatus;
 
+    public UserSummaryEntity(){
 
+    }
 
+    public UserSummaryEntity(int userid, String username, String userfrom, String userstatus, String password) {
+        this.userid = userid;
+        this.username = username;
+        this.password = password;
+        this.userfrom = userfrom;
+        this.userstatus = userstatus;
+    }
 }

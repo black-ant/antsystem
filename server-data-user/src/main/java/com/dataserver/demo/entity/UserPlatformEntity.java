@@ -29,4 +29,6 @@ public class UserPlatformEntity {
     private String useraccount;
     @OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
     private List<UserRolesEntity> userroles;
+
+
 }

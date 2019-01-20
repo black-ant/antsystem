@@ -24,8 +24,9 @@ public class UserSummaryEntity implements UserDetails {
     @Id
     @GeneratedValue
     private Long sn;
-    private Long userid;
+    private int userid;
     private String username;
+    private String password;
     private String userfrom;
     private String userstatus;
     @ManyToMany(targetEntity = UserRolesEntity.class, fetch = FetchType.EAGER)
@@ -46,7 +47,7 @@ public class UserSummaryEntity implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
