@@ -21,6 +21,13 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:1101/eureka/
+spring:
+  cloud:
+    config:
+      profile: dev
+      label: master
+      uri: http://localhost:9001/
+
 
 security:
   oauth2:
