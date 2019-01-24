@@ -17,8 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RefreshScope
 public class configController {
 
-    @Value("${config-name}")
+//    @Value("${paramone}")
     String configname;
+
     @Autowired
     Environment env;
 

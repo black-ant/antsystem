@@ -1,6 +1,11 @@
 spring:
   application:
     name: api-gateway
+  cloud:
+      config:
+          profile: dev
+          label: master
+          uri: http://localhost:9001/
 
 server:
   port: 2006
@@ -12,21 +17,19 @@ zuul:
       path: /api-datauser/**
       serviceId: datauser
     uaa:
-          path: /uaa/**
-          sensitiveHeaders: "*"
-          serviceId: auth-service
+      path: /uaa/**
+      sensitiveHeaders: "*"
+      serviceId: auth-service
+    server-data-user:
+      path: /user/**
+      sensitiveHeaders: "*"
+      serviceId: server-data-user
   add-proxy-headers: true
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:1101/eureka/
-spring:
-  cloud:
-    config:
-      profile: dev
-      label: master
-      uri: http://localhost:9001/
 
 
 security:
