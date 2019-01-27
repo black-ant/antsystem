@@ -18,17 +18,4 @@ import org.springframework.web.bind.annotation.RestController;
 public class ConfigController {
 
 
-    @Value("${sang}")
-    String sang;
-    @Autowired
-    Environment env;
-
-    @RequestMapping("/sang")
-    public String sang() {
-        return this.sang;
-    }
-    @RequestMapping("/sang2")
-    public String sang2() {
-        return env.getProperty("sang", "未定义");
-    }
 }

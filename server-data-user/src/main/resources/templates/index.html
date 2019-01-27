@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="utf-8">
+    <title>登陆</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="Page-Enter" content="RevealTrans(duration=5,Transitionv=11)">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+</head>
+<body>
+<div class="frame_login">
+    <div class="send_type">
+        <div class="send_get">发送get</div>
+        <div class="send_post">发送post</div>
+    </div>
+    <div class="data_list">
+        <div class="add_data">添加--<input id="add_name" type="text"></div>
+        <div class="data_add"></div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    function getMessaage(){
+
+    }
+    function setQueryString(data) {
+        var params = "";
+        if (isnotnull(data) && (typeof (data) == "object" && Object.keys(data).length > 0)) {
+            params += "?";
+            var num = 0;
+            for (var x in data) {
+                num++;
+                params += x + "=" + data[x];
+                if (num < Object.keys(data).length) {
+                    params += "&";
+                }
+            }
+        }
+        return params; //返回参数值
+    }
+    /**
+     *进行参数不为空判断
+     **/
+    function isnotnull(data) {
+        if ("" == data || "undefined" == data || "null" == data || null == data || typeof data == "undefined") {
+            return false;
+        }
+        return true;
+    }
+    function sendGet(){
+        $.post('http://localhost:2001/platform/testcreate'+setQueryString({username:'gang',userid:"2",usertype:'1'}),
+            {},
+            function (data) {
+                console.log(data);
+            }, "json");
+
+    }
+    function sendPost(){
+
+    }
+    $(".send_get").on("click",function(){
+
+    });
+    $(".add_data").on("click",function(){
+        var name = $("#add_name").val();
+
+    });
+</script>

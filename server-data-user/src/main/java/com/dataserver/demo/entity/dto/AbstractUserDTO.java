@@ -14,6 +14,7 @@ import java.util.Map;
 @Data
 public class AbstractUserDTO {
 
+    Long userid;
     String username;
     String userage;
     String usertype;

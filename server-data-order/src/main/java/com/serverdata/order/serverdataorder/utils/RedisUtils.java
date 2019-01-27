@@ -36,8 +36,4 @@ public class RedisUtils {
     public Set<String> getSetByKey(String key){
         return redisTemplate.opsForSet().members(key);
     }
-
-    public Boolean setSetValue(Set<Object> setobj){
-
-    }
 }

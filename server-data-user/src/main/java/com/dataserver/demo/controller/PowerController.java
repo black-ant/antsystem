@@ -7,6 +7,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PowerController {
 
-    @Value("${paramone}")
-    String configname;
 }
