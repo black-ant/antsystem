@@ -1,5 +1,6 @@
 package com.dataserver.demo.entity;
 
+import com.dataserver.demo.entity.dto.PlatformUserDTO;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,7 +9,8 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-@Entity(name = "user_platform")
+@Entity
+@Table(name = "user_platform")
 public class UserPlatformEntity {
 
     @Id
@@ -17,7 +19,6 @@ public class UserPlatformEntity {
     private String username;
     @Size(max = 3)
     private String userage;
-    @Size(max = 1)
     private Boolean usersex;
     private String systemname;
     private String usertype;
@@ -30,5 +31,12 @@ public class UserPlatformEntity {
     @OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
     private List<UserRolesEntity> userroles;
 
+    public UserPlatformEntity(){}
 
+    public UserPlatformEntity(PlatformUserDTO platformUserDTO){
+        this.username = platformUserDTO.getUsername();
+        this.usersex = platformUserDTO.getSex();
+        this.usertype = platformUserDTO.getType();
+        this.status = platformUserDTO.getStatus();
+    }
 }

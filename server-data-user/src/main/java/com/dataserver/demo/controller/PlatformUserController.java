@@ -40,10 +40,18 @@ public class PlatformUserController extends BaseController{
         return apiResponse(userList);
     }
 
+    @GetMapping("getoneuser")
+    public Wrapper getoneuser(@RequestParam("username") String username,@RequestParam("useraccount") String useraccount){
+        UserPlatformEntity user = userService.getOneUser(1L);
+        return apiResponse(user);
+    }
+
     @PostMapping("createuser")
     public Wrapper createuser(@RequestBody PlatformUserDTO userdto){
         ObjectUtil.reflect(userdto);
-//        userService.createPlatformUser(userdto);
+        logger.debug("userid is :{}---username is:{}",userdto.getId(),userdto.getUsername());
+        logger.info("userid is :{}---username is:{}",userdto.getId(),userdto.getUsername());
+        userService.createPlatformUser(userdto);
         return apiResponse("添加成功");
     }
     @PostMapping("testcreate")

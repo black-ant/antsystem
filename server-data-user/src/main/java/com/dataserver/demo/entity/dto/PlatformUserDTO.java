@@ -12,13 +12,7 @@ import lombok.Data;
 @Data
 public class PlatformUserDTO extends AbstractUserDTO{
 
-//    public PlatformUserDTO() {
-//
-//    }
-//
-//    public PlatformUserDTO(UserPlatformEntity user) {
-//        this.username = user.getUsername();
-//        this.userid = user.getUserid();
-//        this.usertype = user.getUsertype();
-//    }
+    public PlatformUserDTO() {
+
+    }
 }

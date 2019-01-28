@@ -14,17 +14,18 @@ import java.util.Map;
 @Data
 public class AbstractUserDTO {
 
-    Long userid;
+    Long id;
     String username;
-    String userage;
-    String usertype;
-    String usermobild;
-    String userlinkman;
-    String userlinkphone;
-    String userimg;
-    String userdesc;
-    String userstatus;
-    String userisactive;
+    String age;
+    Boolean sex;
+    String type;
+    String mobile;
+    String linkman;
+    String phone;
+    String img;
+    String desc;
+    String status;
+    String isactive;
     //User类对象其余信息
     Map<String,Object> othermessage = new HashMap<String,Object>();
 
