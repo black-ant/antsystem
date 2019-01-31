@@ -35,6 +35,6 @@ public class ShopService {
     }
 
     public Shop getShop(String shopid){
-        return new Shop();
+        return new Shop(1,"myshop","测试");
     }
 }

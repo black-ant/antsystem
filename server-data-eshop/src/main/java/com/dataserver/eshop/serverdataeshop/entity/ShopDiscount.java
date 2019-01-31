@@ -1,5 +1,7 @@
 package com.dataserver.eshop.serverdataeshop.entity;
 
+import javax.persistence.Id;
+
 /**
  * @author 10169
  * @Description TODO
@@ -10,6 +12,7 @@ public class ShopDiscount {
     /**
      * 优惠ID
      */
+    @Id
     private Integer did;
     /**
      * 优惠描述

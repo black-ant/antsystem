@@ -3,6 +3,7 @@ package com.dataserver.eshop.serverdataeshop.entity;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
@@ -17,6 +18,7 @@ import java.util.Date;
 @Table(name="Shop")
 public class Shop {
 
+    @Id
     private Integer shopid;
     private String shopname;
     private Integer shopstatus;
@@ -28,5 +30,13 @@ public class Shop {
     private Date createdate;
     private Date logindate;
 
+    public Shop(){
 
+    }
+
+    public Shop(Integer shopid, String shopname, String shopdesc) {
+        this.shopid = shopid;
+        this.shopname = shopname;
+        this.shopdesc = shopdesc;
+    }
 }
