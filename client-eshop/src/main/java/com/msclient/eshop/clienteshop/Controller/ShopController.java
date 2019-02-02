@@ -1,6 +1,7 @@
-package com.msclient.eshop.clienteshop.Controller;
+package com.msclient.eshop.clienteshop.controller;
 
-import com.msclient.eshop.clienteshop.ServerMapper.EshopMapper;
+import com.msclient.eshop.clienteshop.serverMapper.EshopMapper;
+import com.msclient.eshop.clienteshop.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,13 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ShopController {
 
+
     @Autowired
-    EshopMapper eshopMapper;
+    ShopService shopService;
 
     @GetMapping("/consumer")
+
     public String dc() {
-        return eshopMapper.shopone();
+        return shopService.getShop();
     }
+
+
 
 
 }

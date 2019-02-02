@@ -1,4 +1,4 @@
-package com.msclient.eshop.clienteshop.ServerMapper;
+package com.msclient.eshop.clienteshop.serverMapper;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
