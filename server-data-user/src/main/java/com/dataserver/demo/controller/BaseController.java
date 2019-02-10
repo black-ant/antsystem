@@ -1,7 +1,7 @@
 package com.dataserver.demo.controller;
 
-import com.dataserver.demo.entity.vo.Wrapper;
-import com.dataserver.demo.utils.WrapperResponse;
+import com.dataserver.demo.common.response.Wrapper;
+import com.dataserver.demo.common.response.WrapperResponse;
 
 /**
  * @author 10169

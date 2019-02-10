@@ -1,6 +1,4 @@
-package com.dataserver.demo.utils;
-
-import com.dataserver.demo.entity.vo.Wrapper;
+package com.dataserver.eshop.serverdataeshop.common.response;
 
 /**
  * @author 10169

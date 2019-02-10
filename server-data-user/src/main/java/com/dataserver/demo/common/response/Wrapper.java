@@ -1,4 +1,4 @@
-package com.dataserver.demo.entity.vo;
+package com.dataserver.demo.common.response;
 
 import lombok.Data;
 

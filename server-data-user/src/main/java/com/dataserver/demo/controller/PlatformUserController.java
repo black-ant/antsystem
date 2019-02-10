@@ -3,7 +3,7 @@ package com.dataserver.demo.controller;
 
 import com.dataserver.demo.entity.UserPlatformEntity;
 import com.dataserver.demo.entity.dto.PlatformUserDTO;
-import com.dataserver.demo.entity.vo.Wrapper;
+import com.dataserver.demo.common.response.Wrapper;
 import com.dataserver.demo.service.UserManageService;
 import com.dataserver.demo.service.UserPlatformService;
 import com.dataserver.demo.utils.ObjectUtil;

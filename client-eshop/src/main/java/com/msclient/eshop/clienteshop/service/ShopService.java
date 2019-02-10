@@ -1,6 +1,6 @@
 package com.msclient.eshop.clienteshop.service;
 
-import com.msclient.eshop.clienteshop.serverMapper.EshopMapper;
+import com.msclient.eshop.clienteshop.serverMapper.ShopMapper;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,10 +12,7 @@ import org.springframework.stereotype.Service;
  * @Version 1.0
  **/
 @Service
-public class ShopService {
-
-    @Autowired
-    EshopMapper eshopMapper;
+public class ShopService extends BaseService{
 
     @HystrixCommand(fallbackMethod = "geterror")
     public String getShop(){
