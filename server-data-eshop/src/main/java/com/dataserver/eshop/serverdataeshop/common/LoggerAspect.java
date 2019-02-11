@@ -2,6 +2,7 @@ package com.dataserver.eshop.serverdataeshop.common;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.DeclareParents;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,4 +26,8 @@ public class LoggerAspect {
     public void beforesave(){
         logger.debug("货品已保存");
     }
+
+//    @DeclareParents(value=" com.dataserver.eshop.serverdataeshop.common.AspectInto",defaultImpl = CommonService.class)
+//    public static AspectInto aspectInto;
+
 }

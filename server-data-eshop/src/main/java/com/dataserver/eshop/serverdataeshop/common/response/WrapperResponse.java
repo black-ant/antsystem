@@ -40,4 +40,8 @@ public class WrapperResponse {
     }
 
 
+    public static <E> Wrapper<E> success(E o) {
+        return new Wrapper<>(200,"操作成功",o);
+    }
+
 }

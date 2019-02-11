@@ -1,6 +1,5 @@
 package com.msclient.eshop.clienteshop.service;
 
-import com.msclient.eshop.clienteshop.serverMapper.GoodsMapper;
 import com.msclient.eshop.clienteshop.serverMapper.ShopMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @Version 1.0
  **/
 public abstract  class BaseService {
-
 
     @Autowired
     ShopMapper eshopMapper;

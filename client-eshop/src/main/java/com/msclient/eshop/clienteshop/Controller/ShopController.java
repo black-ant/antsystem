@@ -24,6 +24,15 @@ public class ShopController {
     }
 
 
+    @GetMapping("/shopedit")
+    public String shopEdit(){
+       return  shopService.shopedit();
+    }
+    @GetMapping("/shoppath")
+    public String shopPath(){
+       return  shopService.shoppath();
+    }
+
 
 
 }

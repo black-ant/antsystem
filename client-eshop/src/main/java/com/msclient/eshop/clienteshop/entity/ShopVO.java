@@ -1,5 +1,6 @@
 package com.msclient.eshop.clienteshop.entity;
 
+import lombok.Data;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,10 +10,19 @@ import org.springframework.stereotype.Component;
  * @Version 1.0
  **/
 @Component
+@Data
 public class ShopVO {
 
     public String shopid;
     public String shopname;
     public String shopboss;
 
+    public ShopVO() {
+    }
+
+    public ShopVO(String shopid, String shopname, String shopboss) {
+        this.shopid = shopid;
+        this.shopname = shopname;
+        this.shopboss = shopboss;
+    }
 }

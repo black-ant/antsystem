@@ -1,8 +1,13 @@
 package com.msclient.eshop.clienteshop.serverMapper;
 
 import com.msclient.eshop.clienteshop.entity.GoodVO;
+import com.msclient.eshop.clienteshop.entity.ShopVO;
+import com.msclient.eshop.clienteshop.entity.UserVO;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -15,10 +20,18 @@ import java.util.List;
 @FeignClient("server-eshop")
 public interface ShopMapper {
 
+    /*
+     *shop
+     *
+     */
     @PostMapping("/shopone")
     String shopone();
 
+    @PostMapping("/shopedit")
+    String shopEdit(@RequestBody ShopVO shopVO, @RequestParam("shopid") String shopid, @RequestParam("status")String status);
 
+    @PostMapping("/shoppath/{status}")
+    String shopPath(@RequestBody ShopVO shopVO, @RequestParam("shopid") String shopid, @PathVariable("status")String status);
     /*
      *goods
      *
@@ -28,4 +41,12 @@ public interface ShopMapper {
 
     @PostMapping("/savegood")
     String saveGoodList(List<GoodVO> objvos);
+
+    /*
+     *shopUser
+     *
+     */
+    @PostMapping("/user/adduser")
+    String addUser(UserVO userVO);
+
 }
