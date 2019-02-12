@@ -6,6 +6,7 @@ import com.msclient.eshop.clienteshop.service.ShopUserService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,4 +26,5 @@ public class ShopUserController {
     public String addUser(){
         return shopUserService.addUser(new UserVO());
     }
+
 }
