@@ -1,6 +1,10 @@
 package com.serverdata.order.serverdataorder.Entity;
 
+import lombok.Data;
+
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
@@ -9,6 +13,9 @@ import java.util.Date;
  * @Date 2019/1/28 23:04
  * @Version 1.0
  **/
+@Data
+@Entity
+@Table(name="logisticsorderitem")
 public class LogisticsOrderItem {
 
     @Id

@@ -1,6 +1,6 @@
 package com.serverdata.order.serverdataorder.service;
 
-import com.serverdata.order.serverdataorder.utils.RedisUtils;
+import com.serverdata.order.serverdataorder.common.utils.RedisUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
