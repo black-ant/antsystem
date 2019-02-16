@@ -33,8 +33,9 @@ public class LogisticsService {
         List<LogisticsOrderItem> items = new LinkedList<>();
         for (int i = 0; i < 3; i++) {
             LogisticsOrderItem item = new LogisticsOrderItem();
-            item.setOrderid();
+//            item.setOrderid();
         }
+        return logisticsOrder;
     }
 
 

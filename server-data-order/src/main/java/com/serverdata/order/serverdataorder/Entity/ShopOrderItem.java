@@ -1,6 +1,12 @@
 package com.serverdata.order.serverdataorder.Entity;
 
+import lombok.Data;
+
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 /**
@@ -9,12 +15,18 @@ import java.util.Date;
  * @Date 2019/1/28 23:04
  * @Version 1.0
  **/
+@Entity
+@Table(name="shopOrderitem")
+@Data
 public class ShopOrderItem {
 
-    @Id
-    String orderid;
+
+    @EmbeddedId
+    private ShopOrderItemPK shopOrderItemPK;
+    @Size(max=6)
     String orderstatus;
     Date createdate;
+    @Size(max=22)
     String createuser;
     String status;
     String type;

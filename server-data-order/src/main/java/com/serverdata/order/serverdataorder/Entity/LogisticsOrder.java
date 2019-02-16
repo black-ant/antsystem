@@ -16,7 +16,7 @@ import java.util.List;
  * @Version 1.0
  **/
 @Entity
-@Table(name="logisticsorder")
+@Table(name="logisticsOrder")
 @Data
 public class LogisticsOrder {
 

@@ -42,6 +42,9 @@ public interface ShopMapper {
     @PostMapping("/savegood")
     String saveGoodList(List<GoodVO> objvos);
 
+    @PostMapping("/usercart")
+    List<GoodVO> getusercart(String userid);
+
     /*
      *shopUser
      *

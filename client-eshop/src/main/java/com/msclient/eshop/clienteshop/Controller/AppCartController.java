@@ -1,7 +1,15 @@
 package com.msclient.eshop.clienteshop.controller;
 
+import com.msclient.eshop.clienteshop.entity.GoodVO;
+import com.msclient.eshop.clienteshop.response.WrapperResponse;
+import com.msclient.eshop.clienteshop.service.GoodService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.sql.Wrapper;
+import java.util.List;
 
 /**
  * @author 10169
@@ -12,6 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AppCartController {
 
+    @Autowired
+    GoodService goodService;
 
-    @PostMapping("")
+    @PostMapping("mycart")
+    public Wrapper getCart(@RequestParam("userid") String userid){
+        List<GoodVO> goods= goodService.getCart(userid);
+        return WrapperResponse.success(goods);
+    }
 }
