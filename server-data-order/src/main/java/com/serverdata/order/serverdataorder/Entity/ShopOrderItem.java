@@ -16,18 +16,28 @@ import java.util.Date;
  * @Version 1.0
  **/
 @Entity
-@Table(name="shopOrderitem")
+@Table(name = "shopOrderitem")
 @Data
 public class ShopOrderItem {
 
 
     @EmbeddedId
     private ShopOrderItemPK shopOrderItemPK;
-    @Size(max=6)
+    @Size(max = 6)
     String orderstatus;
     Date createdate;
-    @Size(max=22)
+    @Size(max = 22)
     String createuser;
     String status;
     String type;
+
+    public ShopOrderItem() {
+    }
+
+    public ShopOrderItem(String orderid, String sn) {
+        ShopOrderItemPK shopOrderItemPK = new ShopOrderItemPK();
+        shopOrderItemPK.setOrderid(orderid);
+        shopOrderItemPK.setSn(sn);
+        this.shopOrderItemPK = shopOrderItemPK;
+    }
 }

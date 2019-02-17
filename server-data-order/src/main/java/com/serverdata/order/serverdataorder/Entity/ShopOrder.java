@@ -2,10 +2,9 @@ package com.serverdata.order.serverdataorder.Entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author 10169
@@ -15,7 +14,7 @@ import java.util.Date;
  **/
 @Data
 @Entity
-@Table(name="shoporder")
+@Table(name = "shoporder")
 public class ShopOrder {
 
     @Id
@@ -25,4 +24,7 @@ public class ShopOrder {
     String createuser;
     String status;
     String type;
+    @OneToMany
+    @JoinColumn(name = "orderid", referencedColumnName="orderid",updatable = true)
+    List<ShopOrderItem> shopOrderItems;
 }

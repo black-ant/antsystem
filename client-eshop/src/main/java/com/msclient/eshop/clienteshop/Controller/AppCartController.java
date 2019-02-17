@@ -24,8 +24,10 @@ public class AppCartController {
     GoodService goodService;
 
     @PostMapping("mycart")
-    public Wrapper getCart(@RequestParam("userid") String userid){
+    public String getCart(@RequestParam("userid") String userid){
         List<GoodVO> goods= goodService.getCart(userid);
-        return WrapperResponse.success(goods);
+        return "";
     }
+
+
 }
