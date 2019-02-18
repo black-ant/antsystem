@@ -35,4 +35,9 @@ public class OrderEditController {
     public ShopReturnOrder createReturnOrder(){
         return orderEditService.createReturnOrder();
     }
+
+    @GetMapping("getreturnorder")
+    public ShopReturnOrder getReturnOrder(){
+        return orderEditService.createReturnOrder();
+    }
 }
