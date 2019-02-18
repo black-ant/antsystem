@@ -1,6 +1,7 @@
 package com.serverdata.order.serverdataorder.controller;
 
 import com.serverdata.order.serverdataorder.Entity.ShopOrder;
+import com.serverdata.order.serverdataorder.Entity.ShopReturnOrder;
 import com.serverdata.order.serverdataorder.service.OrderEditService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +28,11 @@ public class OrderEditController {
 
     @GetMapping("createorder")
     public ShopOrder createOrder(){
-        return orderEditService.createOrder();
+        return orderEditService.createShopOrder();
+    }
+
+    @GetMapping("createreturnorder")
+    public ShopReturnOrder createReturnOrder(){
+        return orderEditService.createReturnOrder();
     }
 }

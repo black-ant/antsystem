@@ -1,7 +1,10 @@
 package com.serverdata.order.serverdataorder.Entity;
 
-import javax.persistence.Id;
+import lombok.Data;
+
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author 10169
@@ -9,6 +12,9 @@ import java.util.Date;
  * @Date 2019/1/28 23:05
  * @Version 1.0
  **/
+@Data
+@Entity
+@Table(name = "shopReturnOrder")
 public class ShopReturnOrder {
 
     @Id
@@ -18,4 +24,7 @@ public class ShopReturnOrder {
     String createuser;
     String status;
     String type;
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name = "orderid", referencedColumnName="orderid",updatable = true)
+    List<ShopReturnOrderItem> shopReturnOrderItems;
 }
