@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{http://libs.baidu.com/jquery/2.1.4/jquery.min.js}"></script>
+    <script th:src="@{/js/common.js}"></script>
+</head>
+<body>
+<div class="title top_nav">欢迎</div>
+<form th:action="@{/login/uplogin}" method="POST">
+    <label for="username">用户名:</label>
+    <input id="username" type="text" th:name="username" value="" /><br/>
+
+    <label for="password">密码:</label>
+    <input id="password" type="text" th:name="password" /> <br/>
+
+    <input type="submit" value="登录"/>
+</form>
+
+
+</body>
+</html>
+
+<body>
+<script type="text/javascript">
+    $(function () {
+        var token  = comutils.storegeeditutil("token");
+        if(comutils.isnotnull(token)){
+            $.post(params.url + 'login/token',
+                {token: "token"},
+                function (data) {
+                    console.log(" 连接 OK");
+                }, "json");
+        }
+    });
+</script>
+
+</body>
