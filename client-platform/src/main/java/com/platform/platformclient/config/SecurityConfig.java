@@ -1,5 +1,6 @@
 package com.platform.platformclient.config;
 
+import com.platform.platformclient.filter.BeforeFilter;
 import com.platform.platformclient.service.security.JPAUserDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  * @author 10169
@@ -28,6 +32,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private JPAUserDetailsService jpaUserDetailsService;
+    @Autowired
+    private AuthenticationSuccessHandler loginSuccessHanddle;
+    @Autowired
+    private AuthenticationFailureHandler loginFailureHandle;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -42,8 +50,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 antMatchers("/test").permitAll().
                 antMatchers("/platform/*").hasRole("USER").
                 anyRequest().authenticated().and().
-                formLogin().loginPage("/login").defaultSuccessUrl("/01home").and().
-                logout().logoutUrl("/logout").logoutSuccessUrl("/index");
+                formLogin().loginPage("/login").defaultSuccessUrl("/01home").
+                successHandler(loginSuccessHanddle).failureHandler(loginFailureHandle).permitAll().and().
+                logout().logoutUrl("/logout").logoutSuccessUrl("/index").permitAll();
+
+        http.addFilterBefore(new BeforeFilter(), UsernamePasswordAuthenticationFilter.class);
         // @formatter:on
     }
 
