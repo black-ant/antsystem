@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<!--<head th:include="fragments/header/head-common::commonHead('首页')"></head>-->
+<head th:include="pages/fragments/header/head-common::commonHead('首页')"></head>
 <span th:include="pages/fragments/header/head-css::common-css"></span>
-<!--<span th:include="/pages/fragments/header/head-js :: common-js"></span>-->
+<span th:include="pages/fragments/header/head-js :: common-js"></span>
 <body>
 <div class="title top_nav">
     <!--<div th:replace="~{templates/header::head-main}"></div>-->
 </div>
 <div class="innercontent top_innercontent">您在首页</div>
+<div th:replace="pages/fragments/left/left-menu::left-menu"></div>
+<div class="content">
+    <div class="piece">
+
+    </div>
+    <div class="piece" th:each="${findshop()}">
+    </div>
+    <div class="piece">
+
+    </div>
+</div>
 </body>
 <script type="text/javascript">
 
