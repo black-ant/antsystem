@@ -20,6 +20,15 @@ public class BaseController {
         }
     }
 
+    protected <T> Wrapper<T> apiResponse(T result,String msg) {
+        boolean isok = isok(result);
+        if (isok) {
+            return WrapperResponse.wrap(200, msg, result);
+        } else {
+            return WrapperResponse.wrap(500, msg, result);
+        }
+    }
+
     protected boolean isok(Object result) {
         return true;
     }
