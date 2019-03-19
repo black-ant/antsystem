@@ -19,4 +19,7 @@ public interface UserMapper {
 
     @PostMapping("/dep/depidfind")
     String findByDepid( @RequestParam("depid") Long depid);
+
+    @PostMapping("/dep/alldep")
+    public String findAllDep();
 }

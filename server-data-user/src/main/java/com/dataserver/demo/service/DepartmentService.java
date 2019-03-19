@@ -5,6 +5,8 @@ import com.dataserver.demo.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author 10169
  * @Description TODO
@@ -22,6 +24,9 @@ public class DepartmentService {
         return "id".equals(type)?departmentRepository.findByDepid(depid):departmentRepository.findByDepname(depname);
     }
 
+    public List<Department> findAll(){
+        return departmentRepository.findAll();
+    }
     public Department saveOne(Department department){
         return departmentRepository.save(department);
     }

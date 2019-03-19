@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf in action</title>
+</head>
+<body>
+<div th:fragment="left-menu" class="left-menu">
+    <a class="left-menu-item">首页</a>
+    <a class="left-menu-item" href="">员工管理</a>
+    <a class="left-menu-item" th:href="@{dep/department}">部门管理</a>
+    <a class="left-menu-item">权限设置</a>
+    <a class="left-menu-item">仓库设置</a>
+    <a class="left-menu-item">退出</a>
+</div>
+</body>
+</html>
