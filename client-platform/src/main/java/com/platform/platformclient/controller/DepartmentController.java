@@ -34,14 +34,7 @@ public class DepartmentController {
     }
 
     @GetMapping("dep/departement")
-    public String repage(Model model) {
-        List<DepartmentVO> deplist = departmentService.findAllDep();
-        model.addAttribute("list",deplist);
-        return "redirect:pages/department/depmanage";
-    }
-
-    @GetMapping("dep/departement1")
-    public ModelAndView repage1() {
+    public ModelAndView repage() {
         ModelAndView modelAndView = new ModelAndView();
         List<DepartmentVO> deplist = departmentService.findAllDep();
         modelAndView.addObject("list",deplist);
