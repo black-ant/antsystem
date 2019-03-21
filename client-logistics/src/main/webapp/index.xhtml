@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head></h:head>
+
+<h:form id="form1">
+    <p:dataTable var="info" value="#{infoView.infoList()}" id="infoTable" >
+        <p:column headerText="id">
+            <h:outputText value="#{info.id}" />
+        </p:column>
+
+        <p:column headerText="title">
+            <h:outputText value="#{info.title}" />
+        </p:column>
+
+        <p:column headerText="time">
+            <h:outputText value="#{info.time}">
+                <f:convertDateTime timeZone="GMT+8" pattern="yyyy-MM-dd HH:mm:ss" locale="zh" />
+            </h:outputText>
+        </p:column>
+
+        <p:column headerText="Edit">
+            <p:commandButton value="update">
+                <p:ajax event="click" listener="#{infoView.selectOne(info.id)}" oncomplete="PF('updateDialog').show()" update=":form4" />
+            </p:commandButton>
+            <p:commandButton value="delete">
+                <p:ajax event="click" listener="#{infoView.selectOne(info.id)}" oncomplete="PF('deleteDialog').show()" />
+            </p:commandButton>
+        </p:column>
+    </p:dataTable>
+</h:form>
+
+
+<p:dialog header="update" widgetVar="updateDialog" modal="true">
+    <h:form id="form4">
+        <h:panelGrid columns="2" cellpadding="5" id="updatePanel">
+            <p:outputLabel value="id" />
+            <p:inputText value="#{infoView.select.id}" readonly="true" />
+
+            <p:outputLabel value="title" />
+            <p:inputText value="#{infoView.select.title}" />
+
+            <p:outputLabel value="time" />
+            <p:inputMask value="#{infoView.select.time}" mask="9999-99-99 99:99:99">
+                <f:convertDateTime timeZone="GMT+8" pattern="yyyy-MM-dd HH:mm:ss" locale="zh" />
+            </p:inputMask>
+
+            <p:commandButton value="confirm" oncomplete="PF('updateDialog').hide()" actionListener="#{infoView.update(infoView.select)}" update=":form1:infoTable"  />
+        </h:panelGrid>
+    </h:form>
+</p:dialog>
+
+
+<p:dialog header="Are you sure?" widgetVar="deleteDialog" modal="true">
+    <h:form id="form2">
+        <h:panelGrid columns="2" cellpadding="5" id="deletePanel">
+            <f:facet name="facet1">
+                <p:outputLabel value="Are you sure?" />
+            </f:facet>
+
+            <p:commandButton value="Yes" oncomplete="PF('deleteDialog').hide()" actionListener="#{infoView.delete(infoView.select)}" update=":form1:infoTable" icon="ui-icon-check" />
+            <p:commandButton value="No" icon="ui-icon-close" oncomplete="PF('deleteDialog').hide()" />
+        </h:panelGrid>
+    </h:form>
+</p:dialog>
+
+</html>
