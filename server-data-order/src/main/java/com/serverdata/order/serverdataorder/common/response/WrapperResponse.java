@@ -1,4 +1,4 @@
-package com.dataserver.eshop.serverdataeshop.common.response;
+package com.serverdata.order.serverdataorder.common.response;
 
 /**
  * @author 10169

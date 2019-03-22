@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head></h:head>
+
+<h:form id="form1">
+    <p:dataTable id="dt" value="#{storehouseView.storelist}" var="item" style="text-align: center; margin-top: 20px;"
+                 rowIndexVar="riv"
+                 emptyMessage="无记录" widgetVar="compTable" selectionMode="single"
+                 selection="#{storehouseView.selectVO}" rowKey="#{item.id}"
+                 paginator="true" paginatorPosition="bottom" rows="12"
+                 currentPageReportTemplate="共{totalPages}页, {totalRecords}条记录"
+                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport}  跳转到页: {JumpToPageDropdown}">
+
+        <p:ajax event="rowSelect" listener="#{storehouseView.onRowSelect}" process="@this" update="form1:dia01"/>
+
+        <p:column headerText="NO" width="30">
+            <h:outputLabel value="#{riv+1}"/>
+        </p:column>
+        <p:column headerText="编号" width="80">
+            <h:outputText value="#{item.id}"/>
+        </p:column>
+        <p:column headerText="详细地址" width="120">
+            <h:outputText value="#{item.addressdetail}"/>
+        </p:column>
+        <p:column headerText="联系人" width="120">
+            <h:outputText value="#{item.linkman}"/>
+        </p:column>
+        <p:column headerText="联系电话" width="120">
+            <h:outputText value="#{item.linkmobile}"/>
+        </p:column>
+    </p:dataTable>
+    <p:dialog  id="dia01"  widgetVar="companyDialog" >
+
+    </p:dialog>
+</h:form>
+
+</html>
