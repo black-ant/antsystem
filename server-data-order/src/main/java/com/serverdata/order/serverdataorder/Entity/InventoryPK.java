@@ -5,15 +5,17 @@ import lombok.Data;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 /**
  * @author 10169
  * @Description TODO
  * @Date 2019/3/25 23:23
  * @Version 1.0
- **/@Embeddable
+ **/
+@Embeddable
 @Data
-public class InventoryPK {
+public class InventoryPK implements Serializable {
 
     @NotNull
     @Column(length = 30)

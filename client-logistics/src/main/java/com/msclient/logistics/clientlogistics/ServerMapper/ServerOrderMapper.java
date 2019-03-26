@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 @FeignClient("server-order")
 public interface ServerOrderMapper {
 
-    @PostMapping("findall")
-    String findAll();
+    @PostMapping("storehouse/findall")
+    String findStorehouseAll();
+
+    @PostMapping("inventory/findall")
+    String findInventoryAll();
 }

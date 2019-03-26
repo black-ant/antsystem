@@ -19,6 +19,10 @@ public class InventoryService {
     InventoryRepository inventoryRepository;
 
     public List<Inventory> findAll(){
-        return  inventoryRepository.findAll();
+        List<Inventory> list = inventoryRepository.findAll();
+        for(Inventory inv : list){
+            inv.exchangePK();
+        }
+        return  list;
     }
 }

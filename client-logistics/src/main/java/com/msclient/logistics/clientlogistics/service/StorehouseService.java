@@ -20,7 +20,7 @@ public class StorehouseService extends BaseService {
     Logger logger = LoggerFactory.getLogger(getClass());
 
     public List<StorehouseVO> findAll() {
-        String wrapper = serverOrderMapper.findAll();
+        String wrapper = serverOrderMapper.findStorehouseAll();
         logger.info("wrapper is :{}", wrapper);
         List<StorehouseVO> list = JSONUtils.wrapperToList(wrapper, StorehouseVO.class);
         return list;

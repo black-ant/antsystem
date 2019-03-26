@@ -16,8 +16,8 @@ import java.util.Date;
  * @Version 1.0
  **/
 @Entity
-@Table(name = "shopOrderitem")
 @Data
+@Table(name = "shopOrderitem")
 public class ShopOrderItem {
 
 

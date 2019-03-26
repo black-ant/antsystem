@@ -30,4 +30,9 @@ public class JSONUtils {
         JSONObject obj =toJsonObject(json);
         return obj.getJSONArray("result").toJavaList(beanClass);
     }
+
+    public static <T> List<T> wrapperPKToList(String json, Class<T> beanClass) {
+        JSONObject obj =toJsonObject(json);
+        return obj.getJSONArray("result").toJavaList(beanClass);
+    }
 }
