@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/header/head-common::commonHead('首页')"></head>
+<style>
+    .pop-up{
+        display: none;
+    }
+</style>
+
+<body>
+<!-- WRAPPER -->
+<div id="wrapper">
+    <!-- 上部模板 -->
+    <div th:replace="fragments/header/head-main::header"></div>
+    <!-- 左侧菜单 -->
+    <div th:replace="fragments/left/left-menu::left-menu"></div>
+    <!-- MAIN -->
+    <div class="main">
+        <!-- MAIN CONTENT -->
+        <div class="list">
+            <div class="list-item" th:each="good:${goods}">
+                <div class="item-title" th:text="${good.goodscode}"></div>
+                <div class="item-msg" th:text="${good.goodsdesc}"></div>
+                <button class="edit-shop item-bt" th:data="${good.goodscode}" th:text="修改"></button>
+            </div>
+        </div>
+        <div id="edit-main" class="main-content" th:object="${editGood}">
+
+
+            <!--<form +-->
+
+        </div>
+        <div id="_edit-pop" class="pop-up" th:fragment="pop-edit" >
+            <form action="/shopedit" th:action="@{/editgood}" method="POST" th:object="${goodone}" th:if="${goodone!=null}">
+                <div class="shop-title">
+                    <div th:text="${session.shopid}"></div>
+                    <div class="button">
+                        <input type="submit" value="提交">
+                    </div>
+                </div>
+                <div class="shop-edit">
+                    <div class="shop-item">
+                        <div class="item-title">货号</div>
+                        <div class="item-input">
+                            <input name="goodscode" th:type="text" th:value="${goodone.goodscode}">
+                        </div>
+                    </div>
+                    <div class="shop-item">
+                        <div class="item-title">货品描述</div>
+                        <div class="item-input">
+                            <input name="goodsdesc" th:type="text" th:value="${goodone.goodsdesc}">
+                        </div>
+                    </div>
+                    <div class="shop-item">
+                        <div class="item-title">货品标题</div>
+                        <div class="item-input">
+                            <input name="goodstitle" th:type="text" th:value="${goodone.goodstitle}">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- END MAIN CONTENT -->
+    </div>
+    <!-- END MAIN -->
+    <div class="clearfix"></div>
+    <footer>
+        <div class="container-fluid">
+            <p class="copyright">Copyright &copy; 2017.Company name All rights reserved.More Templates <a
+                    href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a
+                    href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+        </div>
+    </footer>
+</div>
+<!-- END WRAPPER -->
+<span th:replace="fragments/header/head-js :: common-js"></span>
+</body>
+<script type="text/javascript">
+    $(function () {
+        $(".edit-shop").on("click", function () {
+            var code = $(this).attr("data");
+            $.post("findgood?code="+code,{},function (data){
+                $("#_edit-pop").show();
+               console.log(JSON.stringify(data));
+            });
+        })
+    });
+</script>
+</html>

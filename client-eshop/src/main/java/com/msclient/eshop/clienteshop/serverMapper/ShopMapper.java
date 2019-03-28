@@ -25,19 +25,26 @@ public interface ShopMapper {
      *
      */
     @PostMapping("/shopone")
-    String shopone();
+    String shopone(@RequestParam("shopid") String shopid);
 
     @PostMapping("/shopedit")
-    String shopEdit(@RequestBody ShopVO shopVO, @RequestParam("shopid") String shopid, @RequestParam("status")String status);
+    String shopEdit(@RequestBody ShopVO shopVO, @RequestParam("shopid") String shopid, @RequestParam("status") String status);
 
     @PostMapping("/shoppath/{status}")
-    String shopPath(@RequestBody ShopVO shopVO, @RequestParam("shopid") String shopid, @PathVariable("status")String status);
+    String shopPath(@RequestBody ShopVO shopVO, @RequestParam("shopid") String shopid, @PathVariable("status") String status);
+
     /*
      *goods
      *
      */
     @PostMapping("/savegood")
     String saveGood(GoodVO objvo);
+
+    @PostMapping("findGoods")
+    String findGoodsByShopid(@RequestParam("shopid") String shopid);
+
+    @PostMapping("findOneGoods")
+    String findGoodsByCode(@RequestParam("code") String code);
 
     @PostMapping("/savegood")
     String saveGoodList(List<GoodVO> objvos);

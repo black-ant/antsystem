@@ -14,6 +14,7 @@ public class GoodVO {
     private Integer id;
     private String goodscode;
     private String goodstitle;
+    private String shopid;
     private String summary;
     private String goodsdesc;
 

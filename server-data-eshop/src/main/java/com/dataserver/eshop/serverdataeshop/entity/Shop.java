@@ -19,7 +19,7 @@ import java.util.Date;
 public class Shop {
 
     @Id
-    private Integer shopid;
+    private String shopid;
     private String shopname;
     private Integer shopstatus;
     private Integer shoplevel;
@@ -34,7 +34,7 @@ public class Shop {
 
     }
 
-    public Shop(Integer shopid, String shopname, String shopdesc) {
+    public Shop(String shopid, String shopname, String shopdesc) {
         this.shopid = shopid;
         this.shopname = shopname;
         this.shopdesc = shopdesc;

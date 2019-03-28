@@ -67,4 +67,22 @@ public class GoodsService {
         return saveGoods;
     }
 
+    /**
+     * 查找店铺所有的货品
+     * @return
+     */
+    public List<ShopGoods> findShopGoods(String shopid){
+        List<ShopGoods> shopGoods = shopGoodsRepository.findByShopid(shopid);
+        return shopGoods;
+    }
+
+    /**
+     * 根据Code 查询单个货品
+     * @return
+     */
+    public ShopGoods findShopGoodsOne(String code){
+        ShopGoods shopGoods = shopGoodsRepository.findByGoodscode(code);
+        return shopGoods;
+    }
+
 }

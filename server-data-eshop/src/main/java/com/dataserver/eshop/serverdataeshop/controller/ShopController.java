@@ -25,9 +25,11 @@ public class ShopController extends BaseController{
     ShopService shopService;
 
     @PostMapping("shopone")
-    public Shop getOneShop(String shopid){
-        return shopService.getShop("001");
+    public Wrapper getOneShop(@RequestParam("shopid") String shopid){
+        return  apiResponse(shopService.getShop(shopid));
     }
+
+
 
     @PostMapping("shopedit")
     public Wrapper<Shop> shopEdit(@RequestBody  Shop shop, @RequestParam("shopid") String shopid, @RequestParam("status")String status){

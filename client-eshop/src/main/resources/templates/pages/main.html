@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/header/head-common::commonHead('首页')"></head>
+
+<body>
+<!-- 上部模板 -->
+<div th:replace="fragments/header/head-main::header"></div>
+<!-- 左侧菜单 -->
+<div th:replace="fragments/left/left-menu::left-menu"></div>
+<!-- JS 文件 -->
+<span th:replace="fragments/header/head-js :: common-js"></span>
+</body>
+</html>

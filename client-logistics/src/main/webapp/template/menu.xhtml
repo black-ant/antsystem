@@ -74,24 +74,20 @@
         </p:growl>
 
         <p:panelMenu style="width:270px">
-            <p:submenu label="Ajax Menuitems">
-                <p:menuitem value="Save" action="#{menuView.save}"/>
-                <p:menuitem value="Update" action="#{menuView.update}"/>
+            <p:submenu label="车辆状况">
+                <p:menuitem value="货品位置" url="/pages/inventory.xhtml"/>
+                <p:menuitem value="车辆信息" url="/pages/inventory.xhtml"/>
+                <p:menuitem value="货品位置" url="/pages/inventory.xhtml"/>
             </p:submenu>
-            <p:submenu label="Non-Ajax Menuitem">
-                <p:menuitem value="Delete" action="#{menuView.delete}" ajax="false"/>
+            <p:submenu label="人员调配">
+                <p:menuitem value="库管调配" url="/pages/storehouse.xhtml"/>
             </p:submenu>
             <p:separator/>
-            <p:submenu label="Navigations">
-                <p:submenu label="Links" icon="pi pi-home">
-                    <p:submenu label="PrimeFaces" icon="pi pi-briefcase">
-                        <p:menuitem value="Home" url="http://www.primefaces.org"/>
-                        <p:menuitem value="Docs" url="http://www.primefaces.org/documentation"/>
-                        <p:menuitem value="Download" url="http://www.primefaces.org/downloads"/>
-                        <p:menuitem value="Support" url="http://www.primefaces.org/support"/>
-                    </p:submenu>
-                </p:submenu>
-                <p:menuitem value="Mobile" icon="pi pi-mobile"/>
+            <p:submenu label="仓库模块">
+                <p:menuitem value="库存信息" url="/pages/inventory.xhtml"/>
+                <p:menuitem value="仓库管理" url="/pages/storehouse.xhtml"/>
+                <p:menuitem value="出入库记录" url="/pages/storehouse.xhtml"/>
+                <p:menuitem value="入库记录" url="/pages/storehouse.xhtml"/>
             </p:submenu>
         </p:panelMenu>
     </h:form>

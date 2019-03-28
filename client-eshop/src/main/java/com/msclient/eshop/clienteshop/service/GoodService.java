@@ -1,6 +1,8 @@
 package com.msclient.eshop.clienteshop.service;
 
 import com.msclient.eshop.clienteshop.entity.GoodVO;
+import com.msclient.eshop.clienteshop.entity.ShopVO;
+import com.msclient.eshop.clienteshop.utils.JSONUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +16,19 @@ import java.util.List;
 @Service
 public class GoodService extends BaseService{
 
-    public String saveGoods(){
-        GoodVO goodVO=new GoodVO(null,"code111","添加货品","sum","desc");
+    public List<GoodVO> findGoodByShopid(String shopid){
+        String wrapper = eshopMapper.findGoodsByShopid(shopid);
+        List<GoodVO> list = JSONUtils.wrapperToList(wrapper,GoodVO.class);
+        return list;
+    }
+
+    public GoodVO findGoodByCode(String code){
+        String wrapper = eshopMapper.findGoodsByCode(code);
+        GoodVO good = JSONUtils.toBean(wrapper,GoodVO.class);
+        return good;
+    }
+
+    public String saveGoods( GoodVO goodVO){
         return eshopMapper.saveGood(goodVO);
     }
 

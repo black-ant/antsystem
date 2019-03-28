@@ -1,0 +1,54 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template/pagetemplate.xhtml">
+    <ui:define name="head">
+        <title>库存信息</title>
+        <script type="text/javascript">
+            addLoadEvent(function () {
+                baidumap.init("fm:mapcontainer");
+            });
+        </script>
+    </ui:define>
+
+    <ui:define name="form">
+        <p:dataTable id="dt" value="#{carInfoView.carVOS}" var="item"
+                     style="text-align: center; margin-top: 20px;"
+                     rowIndexVar="riv"
+                     emptyMessage="无记录" widgetVar="compTable" selectionMode="single"
+                     selection="#{carInfoView.carVO}" rowKey="#{item.carId}"
+                     paginator="true" paginatorPosition="bottom" rows="12"
+                     currentPageReportTemplate="共{totalPages}页, {totalRecords}条记录"
+                     paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport}  跳转到页: {JumpToPageDropdown}">
+
+            <p:ajax event="rowSelect" listener="#{carInfoView.onRowSelect}" process="@this" update="fm:dia01"/>
+
+            <p:column headerText="NO" width="30">
+                <h:outputLabel value="#{riv+1}"/>
+            </p:column>
+            <p:column headerText="编号" width="80">
+                <h:outputText value="#{item.carId}"/>
+            </p:column>
+            <p:column headerText="详细地址" width="120">
+                <h:outputText value="#{item.carAddress}"/>
+            </p:column>
+            <!--<p:column headerText="联系人" width="120">-->
+            <!--<h:outputText value="#{item.longitude}"/>-->
+            <!--</p:column>-->
+            <!--<p:column headerText="联系电话" width="120">-->
+            <!--<h:outputText value="#{item.latitude}"/>-->
+            <!--</p:column>-->
+            <!--<p:column style="width:32px;text-align: center">-->
+            <!--<p:commandButton update=":fm:dia01" oncomplete="PF('dia01').show()" icon="pi pi-search" title="View">-->
+            <!--<f:setPropertyActionListener value="#{item}" target="#{carInfoView.findOneInfo}" />-->
+            <!--</p:commandButton>-->
+            <!--</p:column>-->
+        </p:dataTable>
+        <p:dialog id="dia01" widgetVar="infoDiolog"  class="map-popup-out">
+            <p:panel id="mapcontainer" class="map-popup"></p:panel>
+        </p:dialog>
+
+    </ui:define>
+</ui:composition>

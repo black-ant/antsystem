@@ -4,6 +4,8 @@ import com.dataserver.eshop.serverdataeshop.entity.ShopGoods;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author 10169
  * @Description TODO
@@ -13,5 +15,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ShopGoodsRepository  extends JpaRepository<ShopGoods,Long> {
 
+    List<ShopGoods> findByShopid(String shopid);
 
+    ShopGoods findByGoodscode(String code);
 }

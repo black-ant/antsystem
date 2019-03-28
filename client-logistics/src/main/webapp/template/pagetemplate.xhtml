@@ -11,12 +11,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
         <meta name="apple-mobile-web-app-capable" content="yes"/>
     </f:facet>
+
     <h:outputStylesheet library="css" name="common.css"/>
+    <h:outputScript library="js" name="common.js"/>
+    <h:outputScript library="js" name="map.js"/>
+
     <ui:insert name="head">
         <title>物流管理平台</title>
     </ui:insert>
 </h:head>
 <h:body>
+    <ui:insert name="top-menu">
+        <ui:include src="topmenu.xhtml"/>
+    </ui:insert>
     <ui:insert name="menu">
         <ui:include src="menu.xhtml"/>
     </ui:insert>
@@ -30,16 +37,12 @@
             </p:growl>
         </ui:insert>
 
-        <!-- 禁用掉输入框默认的回车提交事件 -->
-        <p:commandButton id="my_dftCmdBtn" type="button" style="position: fixed;bottom: 0;right: 0;visibility: hidden;"/>
-        <p:defaultCommand target="my_dftCmdBtn"/>
+        <!--&lt;!&ndash; 禁用掉输入框默认的回车提交事件 &ndash;&gt;-->
+        <!--<p:commandButton id="my_dftCmdBtn" type="button" style="position: fixed;bottom: 0;right: 0;visibility: hidden;"/>-->
+        <!--<p:defaultCommand target="my_dftCmdBtn"/>-->
     </h:form>
-
-    <ui:insert name="outer"/>
-    <p:tooltip position="left"/>
-    <p:confirmDialog id="cfmDlg" styleClass="cfmDlg" global="true" closeOnEscape="true" header="确认框" responsive="true">
-        <p:commandButton value="确定" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-        <p:commandButton value="取消" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-    </p:confirmDialog>
+    <!--<ui:insert name="bottom">-->
+        <!--<ui:include src="bottom.xhtml"/>-->
+    <!--</ui:insert>-->
 </h:body>
 </html>

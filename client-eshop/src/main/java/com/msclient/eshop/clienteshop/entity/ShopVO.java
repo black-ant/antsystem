@@ -16,6 +16,9 @@ public class ShopVO {
     public String shopid;
     public String shopname;
     public String shopboss;
+    public String shopdesc;
+    public String linkman;
+    public String linkphone;
 
     public ShopVO() {
     }

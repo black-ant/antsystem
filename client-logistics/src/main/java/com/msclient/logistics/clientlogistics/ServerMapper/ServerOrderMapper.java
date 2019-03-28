@@ -3,6 +3,7 @@ package com.msclient.logistics.clientlogistics.ServerMapper;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author 10169
@@ -18,4 +19,8 @@ public interface ServerOrderMapper {
 
     @PostMapping("inventory/findall")
     String findInventoryAll();
+
+    @PostMapping("info/infocarid")
+    String findCarInfoByCarId(@RequestParam("carid") Long carid);
+
 }
