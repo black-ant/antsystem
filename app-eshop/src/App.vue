@@ -1,30 +1,46 @@
 <template>
+
   <div id="app">
+    <div class="top">
+      <app-header v-if="header_show"></app-header>
+    </div>
     <router-view/>
+    <div class="bottom">
+      <app-footer v-if="footer_show"></app-footer>
+    </div>
   </div>
+
 </template>
 
 <script>
-import test from './components/mytest.vue'
-export default {
-  name: 'App',
-  data () {
-    return {
-      msg: '首页'
-    }
-  },
-  components: { test }
-}
+  import home from './pages/common/home.vue'
+  import header from '@/components/header'
+  import footer from '@/components/footer'
+
+  export default {
+    name: 'App',
+    data() {
+      return {
+        msg: '首页',
+        header_show: true,
+        footer_show: true,
+      }
+    }, components: {
+      'home': home,
+      'app-header': header,
+      'app-footer': footer,
+    },
+  }
 
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
 </style>
