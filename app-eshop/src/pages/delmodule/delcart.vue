@@ -17,7 +17,7 @@
   import {findGoods} from '@/service/apiGetData';
 
   export default {
-    name: 'goodslist',
+    name: 'delcart',
     data() {
       return {
         msg: '欢迎来到菜鸟教程1！'

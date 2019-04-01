@@ -1,8 +1,7 @@
 <template>
   <div class="content">
-
-    <div> 这里是中间</div>
-
+    <div class="title"> 蚂蚁商城</div>
+    <div class="item"></div>
   </div>
 </template>
 

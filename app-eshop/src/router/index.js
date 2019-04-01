@@ -21,11 +21,12 @@ Vue.use(Router);
 Vue.use(VueResource);
 
 export default new Router({
+  mode:'history',
   routes: [
     {
       path: '/',
-      name: 'test',
-      component: test
+      name: 'home',
+      component: home
     },
     {
       path: '/del/delgood',
@@ -41,11 +42,6 @@ export default new Router({
       path: '/dl/delorder',
       name: 'delorder',
       component: delorder
-    },
-    {
-      path: '/home',
-      name: 'home',
-      component: home
     },
     {
       path: '/test1',

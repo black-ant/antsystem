@@ -62,3 +62,84 @@ td,th {display:table-cell;vertical-align:inherit;}
 /*特殊颜色汇总*/
 .money-r{color: #DF2F2F;font-weight: bold;}
 content-box{padding:0.6rem;}
+
+
+/*底部状态栏*/
+.bottom_nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 14vw;
+  font-size: 3vw;
+  line-height: 6vw;
+  z-index: 100;
+  padding: 0;
+  background: #ffffff;
+  box-shadow: 0 0 2vw #dedede;
+}
+.bottom_nav .item{
+  float:left;
+  width:20%;
+  text-align:center;
+  padding-top: 2vw;
+  color:#999999;
+}
+
+.bottom_nav .item img{
+  height:7vw;
+  display: block;
+  margin:0 auto;
+}
+.bottom_nav .iconfont{
+  font-size: 7vw;
+}
+.bottom_nav .iconfont_new{
+  font-size: 7vw;
+}
+
+
+/*顶部状态栏*/
+.top_nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 13vw;
+  line-height: 14vw;
+  z-index: 100;
+  padding:0;
+  background:#ffffff;
+  color:#000000;
+  box-shadow: 0 2px 1px #efefef;
+}
+.top_nav .top_left{
+  position:absolute;
+  left:2vw;
+  top: 2px;
+  z-index:1000;
+  width: 8vw;
+  height: 12vw;
+}
+.top_nav .back{
+  /*background:url(../images/12.png) center center no-repeat;*/
+  background-size: 3vw 5vw;
+}
+.top_nav .top_right{
+  position:absolute;
+  right:0;
+  top:0;
+  z-index:1000;
+  width: 10vw;
+  height: 14vw;
+}
+.top_nav .top_menu{
+  width: 68vw;
+  left: 15vw;
+  display: block;
+  position: absolute;
+  font-size: 4.5vw;
+  text-align: center;
+  font-family:"PingFangSC-Regular", Helvetica, "Noto SansCJK",Roboto,"Microsoft YaHei", "Helvetica Neue",Arial;
+  letter-spacing: 1vw;
+}

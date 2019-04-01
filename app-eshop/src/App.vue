@@ -21,7 +21,7 @@
     name: 'App',
     data() {
       return {
-        msg: '首页',
+        title: '首页',
         header_show: true,
         footer_show: true,
       }
@@ -35,6 +35,8 @@
 </script>
 
 <style>
+  @import "./style/common.css";
+  @import "./style/iconfont.css";
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

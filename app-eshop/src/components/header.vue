@@ -1,6 +1,10 @@
 <template>
   <div id="_top" class="top_nav">
-      蚂蚁商城
+    <div class="top_nav">
+      <!--<i class="top_left back iconfont icon-back"></i>-->
+      <div class="top_menu">{{title}}</div>
+      <div class="top_right"></div>
+    </div>
   </div>
 </template>
 <script>
@@ -13,7 +17,6 @@
         footer_show: true,
       }
     },
-    components: {
-    },
+    components: {},
   }
 </script>
