@@ -14,14 +14,14 @@ import delgood from '@/pages/delmodule/delgood'
 import delcart from '@/pages/delmodule/delcart'
 import delorder from '@/pages/delmodule/delorder'
 
-import header from '@/components/mytest'
+import cusaddress from '@/pages/myselfmodule/cusaddress'
 
 
 Vue.use(Router);
 Vue.use(VueResource);
 
 export default new Router({
-  mode:'history',
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -50,6 +50,10 @@ export default new Router({
     {
       path: '/test2',
       component: test2
+    },
+    {
+      path: '/cusaddress',
+      component: cusaddress
     }
   ]
 })

@@ -3,7 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store/'
 import VueRouter from "vue-router";
+
 Vue.use(VueRouter);
 Vue.config.productionTip = false
 
@@ -14,6 +16,7 @@ Vue.config.debug = true;
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

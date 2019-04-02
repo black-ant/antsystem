@@ -1,5 +1,7 @@
 import axios from 'axios';
 import router from '@/router';
+
+/* 注入vue全局中，这样我们可以在组件内或者JS内通过使用this.$qs来使用qs库*/
 import {Toast, MessageBox} from 'mint-ui';
 
 axios.defaults.timeout = 20000;

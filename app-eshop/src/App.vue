@@ -21,7 +21,6 @@
     name: 'App',
     data() {
       return {
-        title: '首页',
         header_show: true,
         footer_show: true,
       }
