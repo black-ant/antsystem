@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div class="title"> {{title}}</div>
-    <div class="item" @click=" ;">点击</div>
+    <div class="item" @click="">点击</div>
   </div>
 </template>
 
@@ -14,16 +14,17 @@
     data() {
       return {}
     },
-    activated: function () {
+    mounted: function () {
       console.log("执行activated");
-      changetitle('首页222')
+      changetitle('首页222');
+      changetop("cm");
     },
     computed: {
-      ...mapGetters(['title']) // 动态计算属性，相当于this.$store.getters.resturantName
+      ...mapGetters(['title','showtop'])
     },
     methods: {
       ...mapActions(
-        ['changetitle']
+        ['changetitle','changetop']
       ),
     }
   }

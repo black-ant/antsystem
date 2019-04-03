@@ -1,7 +1,6 @@
 package com.dataserver.eshop.serverdataeshop.repository;
 
-import com.dataserver.eshop.serverdataeshop.entity.ShopGoods;
-import com.dataserver.eshop.serverdataeshop.entity.ShopUser;
+import com.dataserver.eshop.serverdataeshop.entity.UserShop;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Repository;
  * @Version 1.0
  **/
 @Repository
-public interface ShopUserRepository  extends JpaRepository<ShopUser,Long> {
+public interface ShopUserRepository  extends JpaRepository<UserShop,Long> {
 
 
 }

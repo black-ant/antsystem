@@ -15,7 +15,7 @@ import delcart from '@/pages/delmodule/delcart'
 import delorder from '@/pages/delmodule/delorder'
 
 import cusaddress from '@/pages/myselfmodule/cusaddress'
-
+import cusaddresslist from '@/pages/myselfmodule/cusaddresslist'
 
 Vue.use(Router);
 Vue.use(VueResource);
@@ -39,7 +39,7 @@ export default new Router({
       component: delcart
     },
     {
-      path: '/dl/delorder',
+      path: '/del/delorder',
       name: 'delorder',
       component: delorder
     },
@@ -54,6 +54,10 @@ export default new Router({
     {
       path: '/cusaddress',
       component: cusaddress
+    },
+    {
+      path: '/cusaddresslist',
+      component: cusaddresslist
     }
   ]
 })

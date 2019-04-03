@@ -11,7 +11,6 @@
   </div>
 
 </template>
-
 <script>
   import home from './pages/common/home.vue'
   import header from '@/components/header'
@@ -36,6 +35,7 @@
 <style>
   @import "./style/common.css";
   @import "./style/iconfont.css";
+
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -43,5 +43,13 @@
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
+  }
+
+  .icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
   }
 </style>

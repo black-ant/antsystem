@@ -6,3 +6,7 @@ export const changetitle = (state, param) => {
 }
 
 
+export const changetop = (state, param) => {
+  console.log(" mutations--changetop:{}",param);
+  state.showtop = param // 把方法传递过来的参数，赋值给state中的resturantName
+}

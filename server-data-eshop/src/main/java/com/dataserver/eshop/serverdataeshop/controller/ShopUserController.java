@@ -2,7 +2,7 @@ package com.dataserver.eshop.serverdataeshop.controller;
 
 import com.dataserver.eshop.serverdataeshop.common.response.Wrapper;
 import com.dataserver.eshop.serverdataeshop.common.response.WrapperResponse;
-import com.dataserver.eshop.serverdataeshop.entity.ShopUser;
+import com.dataserver.eshop.serverdataeshop.entity.UserShop;
 import com.dataserver.eshop.serverdataeshop.service.ShopUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,15 +29,15 @@ public class ShopUserController {
     ShopUserService shopUserService;
 
     @PostMapping("adduser")
-    public Wrapper addUser(@RequestBody ShopUser shopUser){
-        logger.info("进入添加员工部分：{}---username:{}--userdesc:{}",shopUser,shopUser.getRemarks(),shopUser.getUsername());
-        shopUserService.addUser(shopUser);
+    public Wrapper addUser(@RequestBody UserShop userShop){
+        logger.info("进入添加员工部分：{}---username:{}--userdesc:{}",userShop,userShop.getRemarks(),userShop.getUsername());
+        shopUserService.addUser(userShop);
         return WrapperResponse.wrap(200);
     }
 
     @PostMapping("adduserno")
-    public Wrapper addUserNoAnnBody(ShopUser shopUser){
-        logger.info("进入添加员工部分,未使用RequestBody：{}---username:{}--userdesc:{}",shopUser,shopUser.getRemarks(),shopUser.getUsername());
+    public Wrapper addUserNoAnnBody(UserShop userShop){
+        logger.info("进入添加员工部分,未使用RequestBody：{}---username:{}--userdesc:{}",userShop,userShop.getRemarks(),userShop.getUsername());
         return WrapperResponse.wrap(200);
     }
 

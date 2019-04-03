@@ -478,3 +478,113 @@ content-box {
 .module-form .item-module .item-value {
   width: auto;
 }
+
+.module-form .op-button {
+  width: 100%;
+}
+
+.module-form .op-button .ensure {
+  background: #35477D;
+  width: 40%;
+  float: right;
+  height: 0.8rem;
+  color: #fff;
+}
+
+.module-list .list-item {
+  display: inline-block;
+  margin: 0.1rem 0;
+}
+
+.module-list .list-item .head-img {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  float: left;
+  line-height: 0.8rem;
+  background: #b5b4b4;
+  color: #fff;
+  margin: 0.2rem 0.1rem;
+  border-radius: 0.8rem;
+  font-size: 0.32rem;
+}
+
+.module-list .list-item .main-msg {
+  display: inline-block;
+  width: 5rem;
+  line-height: 0.48rem;
+  padding: 0.1rem;
+  text-align: left;
+  color: #000;
+}
+
+.module-list .list-item .main-msg span {
+  font-size: 0.2rem;
+  color: #959595;
+}
+
+.module-list .list-item .right-icon {
+  display: inline-block;
+  width: 1rem;
+  height: auto;
+  margin: 0.1rem 0;
+  padding: 0.3rem 0.1rem;
+  float: right;
+  border-left: 1px solid #ccc;
+  color: #959595;
+}
+
+.page-main .page-select {
+  display: inline-block;
+  margin: 0.1rem 0;
+  border-bottom: 0.2rem solid #F0F0F0;
+  width: 100%;
+}
+
+.page-main .page-select .head-img {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  float: left;
+  line-height: 0.8rem;
+  color: #fff;
+  margin: 0.2rem 0.1rem;
+  font-size: 0.52rem;
+}
+
+.page-main .page-select .main-msg {
+  display: inline-block;
+  width: 5rem;
+  line-height: 0.48rem;
+  padding: 0.1rem;
+  text-align: left;
+  color: #000;
+}
+
+.page-main .page-select .main-msg span {
+  font-size: 0.2rem;
+  color: #959595;
+}
+
+.page-main .page-select .right-icon {
+  display: inline-block;
+  width: 1rem;
+  height: auto;
+  margin: 0.1rem 0;
+  padding: 0.3rem 0.1rem;
+  float: right;
+  border-left: 1px solid #ccc;
+  color: #959595;
+}
+.page-main .page-select {
+  display: inline-block;
+  margin: 0.1rem 0;
+  width: 100%;
+  border-bottom: none;
+}
+.border-bk{
+  background-image: linear-gradient(45deg,#f3bebe 25%,#aceaac 0,#aceaac 50%,#f3bebe 0,#f3bebe 75%,#aceaac 0);
+  background-size: 40px 40px;
+  height: 0.1rem;
+}
+

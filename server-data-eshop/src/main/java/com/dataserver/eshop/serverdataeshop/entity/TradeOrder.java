@@ -27,10 +27,10 @@ public class TradeOrder {
     @Column(columnDefinition = "varchar(100) default '' comment '店铺ID'")
     private String shopId;
 
-    @Column(columnDefinition = "int(100) default 0 comment '交易类型'")
+    @Column(columnDefinition = "int(3) default 0 comment '交易类型'")
     private Integer type;
 
-    @Column(columnDefinition = "int(100) default 0 comment '交易状态'")
+    @Column(columnDefinition = "int(3) default 0 comment '交易状态'")
     private Integer status;
 
     @Column(columnDefinition = "datetime comment '创建时间'")
@@ -39,13 +39,13 @@ public class TradeOrder {
     @Column(columnDefinition = "datetime comment '更新时间'")
     private Date updateTime;
 
-    @Column(columnDefinition = "int(10) default 0 comment '关闭类型'")
+    @Column(columnDefinition = "int(3) default 0 comment '关闭类型'")
     private Integer closeType;
 
-    @Column(columnDefinition = "int(100) default 0 comment '交易数量'")
+    @Column(columnDefinition = "int(6) default 0 comment '交易数量'")
     private Integer num;
 
-    @Column(columnDefinition = "int(10) default 0 comment '订单数量'")
+    @Column(columnDefinition = "int(3) default 0 comment '订单数量'")
     private Integer ordernum;
 
     @Column(columnDefinition = "varchar(100) default '' comment '货品编号'")
@@ -75,7 +75,7 @@ public class TradeOrder {
     @Column(columnDefinition = "varchar(200) default '' comment '收货邮编'")
     private String delZip;
 
-    @Column(columnDefinition = "int(10) default 0 comment '收货类型'")
+    @Column(columnDefinition = "int(3) default 0 comment '收货类型'")
     private Integer delType;
 
     @Column(columnDefinition = "decimal(9,2) default NULL comment ' 发货时间'")
@@ -90,7 +90,7 @@ public class TradeOrder {
     @Column(columnDefinition = "decimal(9,2) default NULL comment '付款时间'")
     private Date payTime ;
 
-    @Column(columnDefinition = "int(10) default 0 comment '支付类型'")
+    @Column(columnDefinition = "int(3) default 0 comment '支付类型'")
     private Integer payType ;
 
     @Column(columnDefinition = "varchar(200) default '' comment '第三方ID'")

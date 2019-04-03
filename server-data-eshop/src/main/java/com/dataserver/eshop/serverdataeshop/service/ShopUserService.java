@@ -1,6 +1,6 @@
 package com.dataserver.eshop.serverdataeshop.service;
 
-import com.dataserver.eshop.serverdataeshop.entity.ShopUser;
+import com.dataserver.eshop.serverdataeshop.entity.UserShop;
 import com.dataserver.eshop.serverdataeshop.repository.ShopUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,15 +20,15 @@ public class ShopUserService {
     /**
      * 添加店铺用户
      */
-    public ShopUser addUser(ShopUser shopUser) {
-        shopUser = editShopUser(shopUser);
-        return shopUserRepository.save(shopUser);
+    public UserShop addUser(UserShop userShop) {
+        userShop = editShopUser(userShop);
+        return shopUserRepository.save(userShop);
     }
 
-    public ShopUser editShopUser(ShopUser shopUser) {
-        shopUser.setLevel("1");
-        shopUser.setRemarks("添加用户");
-        return shopUser;
+    public UserShop editShopUser(UserShop userShop) {
+        userShop.setLevel("1");
+        userShop.setRemarks("添加用户");
+        return userShop;
     }
 
 }

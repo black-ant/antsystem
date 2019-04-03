@@ -4,5 +4,7 @@ export function changetitle({commit}, name) {
   console.log("action:{}",name);
   return commit ('changetitle', name)
 }
+export const changetop = ({commit},name) => commit('changetop', name)
+
 // ES6精简写法
 // export const modifyAName = ({commit},name) => commit('modifyAName', name)

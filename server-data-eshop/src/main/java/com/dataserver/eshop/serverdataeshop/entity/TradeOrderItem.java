@@ -29,25 +29,25 @@ public class TradeOrderItem {
     @Column(columnDefinition = "varchar(100) default '' comment '店铺ID'")
     private String shopId;
 
-    @Column(columnDefinition = "int(10) default 0 comment '交易状态'")
+    @Column(columnDefinition = "int(3) default 0 comment '交易状态'")
     private Integer status;
 
-    @Column(columnDefinition = "int(100) default 0 comment '商品ID'")
+    @Column(columnDefinition = "int(4) default 0 comment '商品ID'")
     private Integer itemId;
 
     @Column(columnDefinition = "varchar(100) default '' comment '商品标题'")
     private String title;
 
-    @Column(columnDefinition = "int(10) default 0 comment '商品总类型'")
+    @Column(columnDefinition = "int(3) default 0 comment '商品总类型'")
     private Integer goodsType;
 
-    @Column(columnDefinition = "int(10) default 0 comment '商品类型'")
+    @Column(columnDefinition = "int(3) default 0 comment '商品类型'")
     private Integer itemType;
 
-    @Column(columnDefinition = "int(10) default 0 comment 'SKU编号'")
+    @Column(columnDefinition = "int(5) default 0 comment 'SKU编号'")
     private Integer skuId;
 
-    @Column(columnDefinition = "int(10) default 0 comment 'SKU值'")
+    @Column(columnDefinition = "int(5s) default 0 comment 'SKU值'")
     private String skuPropertiesName;
 
     @Column(columnDefinition = "decimal(9,2) default NULL comment '商品价格'")

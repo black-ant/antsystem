@@ -20,11 +20,11 @@ axios.interceptors.request.use(function (config) {
 
 // 添加响应拦截器
 axios.interceptors.response.use(function (response) {
-  if (response.data.result.length === 1) {
+  // if (response.data.result.length === 1) {
     return Promise.resolve(response.data.result);
-  } else {
-    return Promise.reject(response.data);
-  }
+  // } else {
+  //   return Promise.reject(response.data);
+  // }
 }, function (error) {
   // 对响应错误做点什么
   return Promise.reject(error);

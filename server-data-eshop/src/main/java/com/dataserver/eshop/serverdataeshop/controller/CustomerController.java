@@ -9,7 +9,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author 10169
@@ -30,5 +33,18 @@ public class CustomerController extends BaseController{
         logger.info(JSONObject.toJSONString(coutomerAddress.getDelName()));
         logger.info(JSONObject.toJSONString(coutomerAddress));
         return apiResponse( cusservice.addCustomerAddress(coutomerAddress));
+    }
+
+    @PostMapping("getcusaddress")
+    public Wrapper getCustomerAddressList(@RequestParam("userid") Integer userid,@RequestParam("filter") String filter){
+        logger.info("userid :{}---filter:{}",userid,filter);
+        List<CustomerAddressVO> customerAddressVOS = cusservice.findCustomerAddressList(userid,filter);
+        return apiResponse( customerAddressVOS);
+    }
+    @PostMapping("finddefaultaddress")
+    public Wrapper findDefaultAddress(@RequestParam("userid") Integer userid,@RequestParam("filter") String filter){
+        logger.info("userid :{}---filter:{}",userid,filter);
+        CustomerAddressVO customerAddressVO = cusservice.findDefaultAddress(userid,filter);
+        return apiResponse( customerAddressVO);
     }
 }

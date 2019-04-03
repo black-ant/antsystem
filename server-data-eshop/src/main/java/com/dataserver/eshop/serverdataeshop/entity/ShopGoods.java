@@ -16,7 +16,7 @@ import java.util.Date;
  **/
 @Data
 @Entity
-@Table(name = "shopgoods")
+@Table(name = "shopGoods")
 public class ShopGoods {
     @Id
     private Integer id;

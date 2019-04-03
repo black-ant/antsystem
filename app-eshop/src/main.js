@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import store from './store/'
 import VueRouter from "vue-router";
+import './utils/iconfont.js'
 
 Vue.use(VueRouter);
 Vue.config.productionTip = false

@@ -2,7 +2,6 @@
   <div class="goodslist" id="_good">
     <div class="title">{{msg}}</div>
     <button type="primary" size="large" :disabled="disCommitBtn" v-on:click="findgoods">查询商品</button>
-    <div>{{type}}</div>
     <div class="cart_container" v-for="item in goodlist">
       <div class="cart-list-item" :data-uid="item.goodscode" v-on:click="selectgoodfun(item)">
         <div class="item img">
@@ -13,7 +12,7 @@
         <div class="item desc">{{item.goodsdesc}}</div>
       </div>
     </div>
-    <div class="pop-up">
+    <div class="pop-up" v-show="showpop" >
       <div class="goodmain">
         <img src="../../assets/good1.png" class="goodsimg" width="20%"/>
         <div class="item title">{{selectgood.goodstitle}}</div>
@@ -21,10 +20,10 @@
         <div class="item desc">{{selectgood.goodsdesc}}</div>
       </div>
       <div class="goodtype">
-        <div class="itemtype">
-          <div class="title">规格</div>
+        <div class="itemtype" v-for="(value, key, index) in showsku">
+          <div class="title">{{key}}</div>
           <div class="select">
-            <div class="item" v-for="item in selectgood.sizetype">{{item.desc}}</div>
+            <div class="item" v-for="(value1, key1, index1)  in value">{{value.key1}}</div>
           </div>
         </div>
       </div>
@@ -38,6 +37,7 @@
 
 <script>
   import {findGoods} from '@/service/apiGetData'
+  import {findGoodsOne} from '@/service/apiGetData'
   import imggood1 from '../../assets/good1.png'
 
   export default {
@@ -54,7 +54,9 @@
           goodsize: '商品尺码',
           goodsdesc: '商品描述',
           sizetype: [{'id': '1', 'desc': '大'}, {'id': '2', 'desc': '小'}]
-        }
+        },
+        showpop: false,
+        showsku:{},
       };
     },
     methods: {
@@ -71,8 +73,29 @@
       },
       selectgoodfun: function (data) {
         var obj = console.log(JSON.stringify(data));
-        this.$set(this.selectgood.goodstitle = data.goodstitle);
-        this.$set(this.selectgood.goodsdesc = data.goodsdesc);
+        let showobj = {};
+        findGoodsOne(data.id,"100001").then(re => {
+          console.log("find success:{}--goolist:{}", JSON.stringify(re), this.goodlist);
+          Object.keys(re).forEach(function(key){
+            let objitem = re[key];
+            Object.keys(objitem).forEach(function(id){
+              console.log(id,objitem[id]);
+              let obj = {id:objitem.skuid,value:objitem[id]};
+              if(showobj.hasOwnProperty(id)){
+                showobj[id].push(obj);
+              }else{
+                let array = new Array();
+                array.push(obj);
+                showobj[id]=array;
+              }
+            });
+          });
+          console.log(showobj);
+          this.showsku = showobj;
+          this.showpop = true;
+        }).catch(err => {
+          console.log("press cancel");
+        });
       },
       ensuregoodfun: function (data) {
 
@@ -86,7 +109,7 @@
   .goodslist .title {
     line-height: 0.72rem;
     display: inline-block;
-    width: 40vw;
+    width: 64vw;
     text-align: left;
     font-size: 0.36rem;
   }

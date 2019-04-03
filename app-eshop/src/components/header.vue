@@ -1,14 +1,25 @@
 <template>
-  <div id="_top" class="top_nav">
-    <!--<i class="top_left back iconfont icon-back"></i>-->
+
+  <!--<i class="top_left back iconfont icon-back"></i>-->
+  <div class="top_nav" v-if="'cm'==showtop">
     <div class="top_menu">{{title}}</div>
-    <div class="top_right">
+    <div class="top_right"></div>
+  </div>
+  <div class="top_nav" v-else-if="'cr'==showtop">
+    <div class="top_nav">
+      <div class="top_menu">{{title}}</div>
+      <div class="top_right" v-on:click="subright"></div>
     </div>
   </div>
+  <div v-else>
+    无
+  </div>
+
 </template>
 <script>
 
   import {mapActions, mapGetters} from 'vuex'
+
   export default {
     name: "header",
     data() {
@@ -18,7 +29,7 @@
       }
     },
     computed: {
-      ...mapGetters(['title']) // 动态计算属性，相当于this.$store.getters.resturantName
+      ...mapGetters(['title', 'showtop']) // 动态计算属性，相当于this.$store.getters.resturantName
     },
     components: {},
   }

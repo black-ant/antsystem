@@ -38,7 +38,7 @@ public class CustomerAddress {
     private String delPlace;
     @Column(columnDefinition = "varchar(200) default '' comment '收货邮编'")
     private String delZip;
-    @Column(columnDefinition = "int(10) default 0 comment '收货类型'")
+    @Column(columnDefinition = "int(4) default 0 comment '收货类型'")
     private Integer delType;
     @Column(columnDefinition = "double(6,6) default 0 comment '纬度'")
     private double latitude;

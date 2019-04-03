@@ -1,4 +1,3 @@
-
 import Vue from 'vue'
 import Vuex from 'vuex'
 import * as getters from './getters' // 导入响应的模块，*相当于引入了这个组件下所有导出的事例
@@ -8,7 +7,8 @@ import * as mutations from './mutations'
 Vue.use(Vuex)
 // 首先声明一个需要全局维护的状态 state,比如 我这里举例的resturantName
 const state = {
-  title: '蚂蚁商城'
+  title: '蚂蚁商城',
+  showtop: 'cm'
 }
 
 // 注册上面引入的各大模块

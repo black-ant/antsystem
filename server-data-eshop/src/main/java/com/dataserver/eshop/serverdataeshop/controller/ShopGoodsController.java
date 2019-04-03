@@ -30,8 +30,15 @@ public class ShopGoodsController extends BaseController{
         return  apiResponse(goodsService.findShopGoods(shopid));
     }
 
-    @PostMapping("findOneGoods")
-    public Wrapper findGoodsByCode(@RequestParam("code") String code){
-        return  apiResponse(goodsService.findShopGoodsOne(code));
+    @PostMapping("findGoodsOne")
+    public Wrapper findOneGoods(@RequestParam("gid") String gid){
+        logger.info("gid is :{}",gid);
+//        goodsService.
+        return  apiResponse("ok");
+    }
+    
+    @PostMapping("findOneGoodsByid")
+    public Wrapper findOneGoodsByID(@RequestParam("gid") Integer gid){
+        return  apiResponse(goodsService.findShopGoodsOne(gid));
     }
 }

@@ -18,4 +18,6 @@ public interface ShopGoodsRepository  extends JpaRepository<ShopGoods,Long> {
     List<ShopGoods> findByShopid(String shopid);
 
     ShopGoods findByGoodscode(String code);
+
+    ShopGoods findById(Integer id);
 }

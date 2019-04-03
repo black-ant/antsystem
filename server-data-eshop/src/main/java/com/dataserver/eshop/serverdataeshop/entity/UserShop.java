@@ -14,9 +14,9 @@ import javax.persistence.Table;
  * @Version 1.0
  **/
 @Entity
-@Table(name="shopuser")
+@Table(name="userShop")
 @Data
-public class ShopUser {
+public class UserShop {
 
     @Id
     @GeneratedValue
