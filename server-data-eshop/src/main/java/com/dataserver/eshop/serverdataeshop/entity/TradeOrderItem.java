@@ -1,11 +1,9 @@
 package com.dataserver.eshop.serverdataeshop.entity;
 
+import com.dataserver.eshop.serverdataeshop.entity.VO.TradeItemVO;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**
@@ -21,7 +19,8 @@ import java.math.BigDecimal;
 public class TradeOrderItem {
 
     @Id
-    private String id;
+    @GeneratedValue
+    private Integer id;
 
     @Column(columnDefinition = "varchar(100) default '' comment '交易编号'")
     private String rid;
@@ -73,4 +72,22 @@ public class TradeOrderItem {
 
     @Column(columnDefinition = "decimal(9,2) default NULL comment '退款金额'")
     private BigDecimal refundedFee;
+
+    public TradeOrderItem() {
+    }
+
+    public TradeOrderItem(TradeItemVO tradeItemVO) {
+        this.shopId = tradeItemVO.getShopId();
+        this.status = 0;
+        this.itemId = tradeItemVO.getItemId();
+        this.title = tradeItemVO.getTitle();
+        this.goodsType = tradeItemVO.getGoodsType();
+        this.itemType = tradeItemVO.getItemType();
+        this.skuId = tradeItemVO.getSkuId();
+        this.skuPropertiesName = tradeItemVO.getSkuPropertiesName();
+        this.price = tradeItemVO.getPrice();
+        this.num = tradeItemVO.getNum();
+        this.buyerMessages = tradeItemVO.getBuyerMessages();
+        this.snapshotId = tradeItemVO.getSnapshotId();
+    }
 }

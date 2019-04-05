@@ -1,13 +1,18 @@
 package com.dataserver.eshop.serverdataeshop.entity;
 
+import com.alibaba.fastjson.JSONObject;
+import com.dataserver.eshop.serverdataeshop.entity.VO.TradeItemVO;
+import com.dataserver.eshop.serverdataeshop.entity.VO.TradeVO;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+
+import static javax.persistence.ConstraintMode.NO_CONSTRAINT;
+import static javax.persistence.ConstraintMode.PROVIDER_DEFAULT;
 
 /**
  * @author 10169
@@ -69,6 +74,9 @@ public class TradeOrder {
     @Column(columnDefinition = "varchar(200) default '' comment '收货收货人姓名'")
     private String delName;
 
+    @Column(columnDefinition = "varchar(200) default '' comment '收货收货人姓名'")
+    private String delMobile;
+
     @Column(columnDefinition = "varchar(200) default '' comment '收货地区编号'")
     private String delPlace;
 
@@ -79,7 +87,7 @@ public class TradeOrder {
     private Integer delType;
 
     @Column(columnDefinition = "decimal(9,2) default NULL comment ' 发货时间'")
-    private Date consignTime ;
+    private Date consignTime;
 
     @Column(columnDefinition = "decimal(9,2) default NULL comment ' 签收时间'")
     private Date signTime;
@@ -88,26 +96,61 @@ public class TradeOrder {
     private String payorderid;
 
     @Column(columnDefinition = "decimal(9,2) default NULL comment '付款时间'")
-    private Date payTime ;
+    private Date payTime;
 
     @Column(columnDefinition = "int(3) default 0 comment '支付类型'")
-    private Integer payType ;
+    private Integer payType;
 
     @Column(columnDefinition = "varchar(200) default '' comment '第三方ID'")
-    private String outerTid ;
+    private String outerTid;
 
     @Column(columnDefinition = "decimal(9,2) default 0 comment '订单总价'")
-    private BigDecimal totalFee ;
+    private BigDecimal totalFee;
 
     @Column(columnDefinition = "decimal(9,2) default 0 comment '配送费'")
     private BigDecimal transfee;
 
     @Column(columnDefinition = "decimal(9,2) default 0 comment '优惠费用'")
-    private BigDecimal discountFee ;
+    private BigDecimal discountFee;
 
     @Column(columnDefinition = "decimal(9,2) default 0 comment '实付'")
     private BigDecimal realfee;
 
     @Column(columnDefinition = "decimal(9,2) default 0 comment '退款'")
-    private BigDecimal refundedFee  ;
+    private BigDecimal refundedFee;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id",referencedColumnName = "id",foreignKey = @ForeignKey(NO_CONSTRAINT))
+    private List<TradeOrderItem> items;
+
+    public TradeOrder() {
+    }
+
+    public TradeOrder(TradeVO tradeVO, String id) {
+        this.id = id;
+        this.type = tradeVO.getType();
+        this.status = 0;
+        this.num = tradeVO.getNum();
+        this.ordernum = tradeVO.getOrdernum();
+        this.goodscode = tradeVO.getGoodscode();
+        this.price = tradeVO.getPrice();
+        this.buyuserid = tradeVO.getBuyuserid();
+        this.buyerMessage = tradeVO.getBuyerMessage();
+        this.delAddress = tradeVO.getDelAddress();
+        this.delAddressDetail = tradeVO.getDelAddressDetail();
+        this.delName = tradeVO.getDelName();
+        this.delMobile = tradeVO.getDelMobile();
+        this.delPlace = tradeVO.getDelPlace();
+        this.delZip = tradeVO.getDelZip();
+        this.delType = tradeVO.getDelType();
+        List<TradeOrderItem> items = new LinkedList<>();
+        for (TradeItemVO itemVO : tradeVO.getItemVOS()) {
+            TradeOrderItem item = new TradeOrderItem(itemVO);
+            item.setRid(id);
+            items.add(item);
+        }
+        this.items = items;
+        System.out.println(JSONObject.toJSONString(items));
+    }
+
 }

@@ -6,6 +6,7 @@
     </div>
     <router-view/>
     <div class="bottom">
+      <div id="show-msg">111</div>
       <app-footer v-if="footer_show"></app-footer>
     </div>
   </div>
@@ -15,6 +16,8 @@
   import home from './pages/common/home.vue'
   import header from '@/components/header'
   import footer from '@/components/footer'
+  import util from '@/utils/common';
+  // Object.definePrototype(Vue.prototype, '$utils', {value: util});
 
   export default {
     name: 'App',

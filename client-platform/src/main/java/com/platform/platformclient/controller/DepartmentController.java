@@ -2,21 +2,27 @@ package com.platform.platformclient.controller;
 
 
 import com.platform.platformclient.entity.vo.DepartmentVO;
+import com.platform.platformclient.entity.vo.GroupVO;
 import com.platform.platformclient.service.DepartmentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class DepartmentController {
+
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     RestTemplate restTemplate;
@@ -34,11 +40,51 @@ public class DepartmentController {
     }
 
     @GetMapping("dep/departement")
-    public ModelAndView repage() {
+    public ModelAndView repage(HttpSession session) {
         ModelAndView modelAndView = new ModelAndView();
         List<DepartmentVO> deplist = departmentService.findAllDep();
-        modelAndView.addObject("list",deplist);
+        modelAndView.addObject("list", deplist);
+        session.setAttribute("newDep",new DepartmentVO());
         modelAndView.setViewName("pages/department/depmanage");
         return modelAndView;
+    }
+
+    @GetMapping("dep/getgroup")
+    public ModelAndView getDepGroup(@RequestParam("depid") Integer depid, HttpSession session) {
+        logger.info("depid is :{}", depid);
+        ModelAndView modelAndView = new ModelAndView();
+        List<GroupVO> list = departmentService.findGroup(depid);
+        modelAndView.addObject("grouplist", list);
+        modelAndView.setViewName("pages/department/depmanage::group-list");
+        return modelAndView;
+    }
+
+    @PostMapping("dep/getCart")
+    public Map<String, Object> getGroupCart(@RequestParam("depid") Integer depid) {
+        logger.info("depid is :{}", depid);
+        Map<String, Object> map = new HashMap<>();
+        return map;
+    }
+
+    @PostMapping("dep/getgroupajax")
+    public Map<String, Object> getgroupajax(@RequestParam("depid") Integer depid) {
+        logger.info("depid is :{}", depid);
+        Map<String, Object> map = new HashMap<>();
+        List<GroupVO> list = departmentService.findGroup(depid);
+        map.put("list", list);
+        return map;
+    }
+
+    @PostMapping("createdep")
+    public String createDep(DepartmentVO departmentVO) {
+        logger.info("depid is :{}", departmentVO);
+
+        return "isoks";
+    }
+
+    @GetMapping("test")
+    public String getDepGroup() {
+        logger.info("test is :{}", "ok");
+        return "ok";
     }
 }

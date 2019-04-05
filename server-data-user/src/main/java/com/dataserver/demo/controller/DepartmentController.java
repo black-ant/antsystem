@@ -2,7 +2,8 @@ package com.dataserver.demo.controller;
 
 
 import com.dataserver.demo.common.response.Wrapper;
-import com.dataserver.demo.entity.Department;
+import com.dataserver.demo.entity.CompanyDepartment;
+import com.dataserver.demo.entity.CompanyGroup;
 import com.dataserver.demo.service.DepartmentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +17,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @RestController
-@RequestMapping("dep")
+        @RequestMapping("dep")
 public class DepartmentController extends BaseController {
 
     Logger logger = LoggerFactory.getLogger(getClass());
@@ -32,24 +33,31 @@ public class DepartmentController extends BaseController {
     }
 
     @PostMapping("addDep")
-    public Wrapper addOneDepartment(Department department) {
+    public Wrapper addOneDepartment(CompanyDepartment department) {
         logger.info("department id :{}---department desc:{}", department.getDepid(), department.getDepdes());
-        Department department1 = departmentService.saveOne(department);
+        CompanyDepartment department1 = departmentService.saveOne(department);
         return apiResponse(department1, "添加部门成功");
     }
 
     @PostMapping("depidfind")
     public Wrapper findByDepid(Long depid) {
         logger.info("查询部门，id:{}", depid);
-        Department department1 = departmentService.findDepartment(depid, null, "id");
+        CompanyDepartment department1 = departmentService.findDepartment(depid, null, "id");
         return apiResponse(department1);
     }
 
     @PostMapping("alldep")
     public Wrapper findAllDep() {
         logger.info("查询所有的部门");
-        List<Department> departments = departmentService.findAll();
+        List<CompanyDepartment> departments = departmentService.findAll();
         return apiResponse(departments);
+    }
+
+    @PostMapping("findgroup")
+    public Wrapper findDepGroupd(@RequestParam("depid") Integer depid) {
+        logger.info("查询指定部门底下的小组");
+        List<CompanyGroup> groups = departmentService.findCompanyGroup(depid);
+        return apiResponse(groups);
     }
 
 }

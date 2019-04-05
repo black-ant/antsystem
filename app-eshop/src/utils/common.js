@@ -28,5 +28,23 @@ export default {
         break;
     }
     return true;
+  },
+  showmsg: function (message) {
+    $("#show-msg").html(message).show().animate({width: '80vw'}, 400).fadeOut(2400);
+    setTimeout(function () {
+      $("#show-msg").css("width", "0px");
+    }, 2400)
+  },
+  showerror: function (message) {
+    $("#show-msg").css("background", "#f47272").html(message).show().animate({width: '80vw'}, 400).fadeOut(3300);
+    setTimeout(function () {
+      $("#show-msg").css({"width": "0px", "background": "#558bc3"});
+    }, 3300)
+  },
+  showinfo: function (message) {
+    $("#show-msg").css("background", "#fb8600").html(message).show().animate({width: '80vw'}, 400).fadeOut(3300);
+    setTimeout(function () {
+      $("#show-msg").css({"width": "0px", "background": "#558bc3"});
+    }, 3300)
   }
 }

@@ -1,7 +1,6 @@
 package com.dataserver.demo.repository;
 
-import com.dataserver.demo.entity.Department;
-import com.dataserver.demo.entity.UserPlatformEntity;
+import com.dataserver.demo.entity.CompanyDepartment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -10,8 +9,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @Date 2019/3/18 22:59
  * @Version 1.0
  **/
-public interface DepartmentRepository extends JpaRepository<Department,Long> {
+public interface DepartmentRepository extends JpaRepository<CompanyDepartment,Long> {
 
-    Department findByDepname(String depname);
-    Department findByDepid(Long depid);
+    CompanyDepartment findByDepname(String depname);
+    CompanyDepartment findByDepid(Long depid);
 }

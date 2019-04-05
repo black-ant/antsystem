@@ -2,6 +2,7 @@ package com.platform.platformclient.service;
 
 import com.platform.platformclient.common.JSONUtils;
 import com.platform.platformclient.entity.vo.DepartmentVO;
+import com.platform.platformclient.entity.vo.GroupVO;
 import com.platform.platformclient.serverMapper.UserMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,5 +29,11 @@ public class DepartmentService extends BaseService{
         return list;
     }
 
+    public List<GroupVO> findGroup(Integer depid){
+        String wrapper = userMapper.findDepGroupd(depid);
+        logger.info("wrapper is :{}",wrapper);
+        List<GroupVO> list= JSONUtils.wrapperToList(wrapper,GroupVO.class);
+        return list;
+    }
 
 }

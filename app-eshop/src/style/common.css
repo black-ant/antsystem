@@ -383,8 +383,16 @@ content-box {
   position: fixed;
   bottom: 1rem;
   width: 100%;
-  background: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  height: 100vh;
   transition: all 0.3s linear;
+}
+
+.pop-up .main {
+  position: absolute;
+  bottom: 0;
+  background: #fff;
+  width: 100%;
 }
 
 .pop-up .op-button {
@@ -412,6 +420,51 @@ content-box {
   float: left;
 }
 
+.pop-up .goodtype {
+  padding: 0.3rem;
+}
+
+.pop-up .op-num {
+  border-top: 1px solid #d2d0d0;
+  padding: 0.1rem;
+  text-align: left;
+}
+
+.pop-up .op-num .title {
+  display: inline-block;
+  width: 30%;
+  margin-left: 0.3rem;
+  text-align: left;
+}
+
+.op-num .right_1 {
+  display: inline-block;
+  width: 60%;
+  text-align: right;
+}
+
+.op-num .right_1 div {
+  width: 0.8rem;
+  height: 0.6rem;
+  line-height: 0.6rem;
+  display: inline-block;
+  text-align: center;
+}
+
+.op-num .op {
+  /*padding: 0.1rem 0.2rem;*/
+  font-size: 6vw;
+  line-height: 5vw;
+  border-radius: 0.1rem 0 0 0.1rem;
+  background: #F0F0F0;
+  text-align: center;
+  color: #999999;
+}
+
+.op-num .op.op-num-add {
+  border-radius: 0 0.1rem 0.1rem 0;
+}
+
 .pop-up .goodtype .itemtype {
   display: inline-block;
   width: 100%;
@@ -437,9 +490,14 @@ content-box {
   height: 0.5rem;
   border-radius: 0.1rem;
   line-height: 0.5rem;
+  background: #efefef;
+  color: #000;
+  text-align: center;
+}
+
+.pop-up .goodtype .itemtype .select .item.isselect {
   background: #35477D;
   color: #fff;
-  text-align: center;
 }
 
 .pop-up .goodmain .item {
@@ -576,15 +634,63 @@ content-box {
   border-left: 1px solid #ccc;
   color: #959595;
 }
+
 .page-main .page-select {
   display: inline-block;
   margin: 0.1rem 0;
   width: 100%;
   border-bottom: none;
 }
-.border-bk{
-  background-image: linear-gradient(45deg,#f3bebe 25%,#aceaac 0,#aceaac 50%,#f3bebe 0,#f3bebe 75%,#aceaac 0);
+
+.border-bk {
+  background-image: linear-gradient(45deg, #f3bebe 25%, #aceaac 0, #aceaac 50%, #f3bebe 0, #f3bebe 75%, #aceaac 0);
   background-size: 40px 40px;
   height: 0.1rem;
 }
 
+#show-msg {
+  position: fixed;
+  bottom: 16vw;
+  right: 10vw;
+  z-index: 10000;
+  width: 1px;
+  height: 40px;
+  line-height: 45px;
+  font-size: 15px;
+  text-align: center;
+  border-radius: 8vw;
+  color: #fff;
+  background: #558bc3;
+  display: none;
+}
+
+.cart-list-item {
+  box-shadow: 0 0.02rem 0.38rem 0 #DDE8F;
+  width: 92%;
+  background-color: #FFFFFF;
+  display: inline-block;
+  text-align: left;
+  margin: .3rem auto;
+  border-radius: 0.16rem;
+}
+
+.goodslist .title {
+  line-height: 0.72rem;
+  display: inline-block;
+  width: 64vw;
+  text-align: left;
+  font-size: 0.36rem;
+}
+
+.op-button .ensure {
+  background: #35477D;
+  width: 40%;
+  float: right;
+  height: 0.8rem;
+  color: #fff;
+}
+
+.cart-list-item img {
+  display: block;
+  float: left;
+}

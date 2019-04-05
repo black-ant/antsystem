@@ -1,5 +1,7 @@
 package com.dataserver.eshop.serverdataeshop.entity.VO;
 
+import lombok.Data;
+
 import java.math.BigDecimal;
 
 /**
@@ -8,6 +10,7 @@ import java.math.BigDecimal;
  * @Date 2019/4/2 17:40
  * @Version 1.0
  **/
+@Data
 public class TradeItemVO {
 
     private String shopId;

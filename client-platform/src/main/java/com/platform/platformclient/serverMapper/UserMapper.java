@@ -22,4 +22,7 @@ public interface UserMapper {
 
     @PostMapping("/dep/alldep")
     public String findAllDep();
+
+    @PostMapping("/dep/findgroup")
+    public String findDepGroupd(@RequestParam("depid") Integer depid);
 }

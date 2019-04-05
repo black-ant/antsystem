@@ -1,5 +1,7 @@
 package com.dataserver.eshop.serverdataeshop.entity.VO;
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.math.BigDecimal;
@@ -12,14 +14,9 @@ import java.util.List;
  * @Date 2019/4/2 17:40
  * @Version 1.0
  **/
+@Data
 public class TradeVO {
 
-    private List<TradeItemVO> itemVOS;
-
-    /**
-     * 店铺ID
-     */
-    private String shopId;
     /**
      * 交易类型
      */
@@ -60,6 +57,7 @@ public class TradeVO {
      * 收货收货人姓名
      */
     private String delName;
+    private String delMobile;
     /**
      * 收货地区编号
      */
@@ -72,4 +70,5 @@ public class TradeVO {
      * 收货类型
      */
     private Integer delType;
+    private List<TradeItemVO> itemVOS;
 }

@@ -17,6 +17,9 @@ public class DepartmentVO {
 
     private Long depid;
     private String depname;
+    private String depDirector;
+    private String depCallUser;
+    private String depMobile;
     private String depdes;
     private String deptype;
     private String power;

@@ -23,4 +23,9 @@ public class JSONUtils {
         JSONObject obj =toJsonObject(json);
         return obj.getJSONArray("result").toJavaList(beanClass);
     }
+
+    public static <T> T wrapperToBean(String json, Class<T> beanClass) {
+        JSONObject obj =toJsonObject(json);
+        return obj.getJSONObject("result").toJavaObject(beanClass);
+    }
 }

@@ -22,13 +22,6 @@ public class BeforeFilter extends GenericFilterBean {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         logger.info("This is a filter before UsernamePasswordAuthenticationFilter.");
-        logger.info("getRemoteHost:{}",servletRequest.getRemoteHost());
-        logger.info("getContentType:{}",servletRequest.getContentType());
-        logger.info("getLocalName:{}",servletRequest.getLocalName());
-        logger.info("getLocalAddr:{}",servletRequest.getLocalAddr());
-        logger.info("getServerName:{}",servletRequest.getServerName());
-        logger.info("getServerName:{}",servletRequest.getRemoteAddr());
-        logger.info("getServerName:{}",servletRequest.getServletContext());
 //        CommonUtils.reflect(servletRequest);
         // 继续调用 Filter 链
         filterChain.doFilter(servletRequest, servletResponse);

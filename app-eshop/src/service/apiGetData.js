@@ -6,12 +6,12 @@ export function findGoods(tp, filter, sid) {
   return axios.post('/findGoods?shopid=' + sid);
 }
 
-export function findGoodsOne(gid,shopid,filter) {
-  return axios.post('/findOneGoodsByid'+ util.setQueryString({gid: gid, shopid: shopid}));
+export function findGoodsOne(gid, shopid, filter) {
+  return axios.post('/findOneGoodsByid' + util.setQueryString({gid: gid, shopid: shopid}));
 }
 
-export function addGoodsToCart(tp, filter, sid) {
-  return axios.post('/addCart?shopid=' + sid);
+export function findCartList(userid, key) {
+  return axios.post('/findcart' + util.setQueryString({userid: userid, key: key}));
 }
 
 //查询用户地址列表

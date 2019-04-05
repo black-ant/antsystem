@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // @formatter:off
         http.authorizeRequests().
                 antMatchers("/index").permitAll().
-                antMatchers("/test").permitAll().
+                antMatchers("/*").permitAll().
                 antMatchers("/platform/*").hasRole("USER").
                 anyRequest().authenticated().and().
                 formLogin().loginPage("/login").defaultSuccessUrl("/01home").
