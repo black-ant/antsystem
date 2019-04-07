@@ -8,16 +8,13 @@ import com.dataserver.demo.service.DepartmentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedList;
 import java.util.List;
 
 @RestController
-        @RequestMapping("dep")
+@RequestMapping("dep")
 public class DepartmentController extends BaseController {
 
     Logger logger = LoggerFactory.getLogger(getClass());
@@ -33,7 +30,7 @@ public class DepartmentController extends BaseController {
     }
 
     @PostMapping("addDep")
-    public Wrapper addOneDepartment(CompanyDepartment department) {
+    public Wrapper addOneDepartment(@RequestBody CompanyDepartment department) {
         logger.info("department id :{}---department desc:{}", department.getDepid(), department.getDepdes());
         CompanyDepartment department1 = departmentService.saveOne(department);
         return apiResponse(department1, "添加部门成功");

@@ -9,30 +9,40 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 @Service
-public class DepartmentService extends BaseService{
+public class DepartmentService extends BaseService {
+
+//    private static HashMap<String,DepartmentVO> cacheList = new ConcurrentHashMap<String,DepartmentVO>();
 
     Logger logger = LoggerFactory.getLogger(getClass());
 
-    public String findByDepid(Long depid){
+    public String findByDepid(Long depid) {
         String wrapper = userMapper.findByDepid(depid);
         return wrapper;
     }
 
-    public List<DepartmentVO> findAllDep(){
+    public String createOne(DepartmentVO departmentVO) {
+        String wrapper = userMapper.addOneDepartment(departmentVO);
+        return wrapper;
+    }
+
+    public List<DepartmentVO> findAllDep() {
         String wrapper = userMapper.findAllDep();
-        logger.info("wrapper is :{}",wrapper);
-        List<DepartmentVO> list= JSONUtils.wrapperToList(wrapper,DepartmentVO.class);
+        logger.info("wrapper is :{}", wrapper);
+        List<DepartmentVO> list = JSONUtils.wrapperToList(wrapper, DepartmentVO.class);
+//        cacheList = list;
         return list;
     }
 
-    public List<GroupVO> findGroup(Integer depid){
+    public List<GroupVO> findGroup(Integer depid) {
         String wrapper = userMapper.findDepGroupd(depid);
-        logger.info("wrapper is :{}",wrapper);
-        List<GroupVO> list= JSONUtils.wrapperToList(wrapper,GroupVO.class);
+        logger.info("wrapper is :{}", wrapper);
+        List<GroupVO> list = JSONUtils.wrapperToList(wrapper, GroupVO.class);
         return list;
     }
 

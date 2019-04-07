@@ -24,6 +24,7 @@
     position: fixed;
     background: #fff;
     margin: 60px 0 0 240px;
-    width: 100%;
+    width: 86%;
     height: 80%;
+    top: 100vh;
 }

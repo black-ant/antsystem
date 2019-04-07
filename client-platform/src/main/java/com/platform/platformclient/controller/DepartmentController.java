@@ -70,6 +70,7 @@ public class DepartmentController {
     public Map<String, Object> getgroupajax(@RequestParam("depid") Integer depid) {
         logger.info("depid is :{}", depid);
         Map<String, Object> map = new HashMap<>();
+
         List<GroupVO> list = departmentService.findGroup(depid);
         map.put("list", list);
         return map;
@@ -78,8 +79,15 @@ public class DepartmentController {
     @PostMapping("createdep")
     public String createDep(DepartmentVO departmentVO) {
         logger.info("depid is :{}", departmentVO);
-
-        return "isoks";
+        ModelAndView modelAndView = new ModelAndView();
+        String wrapper = departmentService.createOne(departmentVO);
+        logger.info("wrapper ： is {}",wrapper);
+        List<DepartmentVO> deplist = departmentService.findAllDep();
+        modelAndView.addObject("list", deplist);
+//        List<DepartmentVO> list = departmentService.createOne(departmentVO);
+//        modelAndView.addObject("grouplist", list);
+//        modelAndView.setViewName("pages/department/depmanage");
+        return "isok";
     }
 
     @GetMapping("test")

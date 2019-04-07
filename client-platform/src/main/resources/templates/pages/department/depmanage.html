@@ -13,10 +13,11 @@
                 <div class="card">
                     <div class="card-header bg-light">
                         部门列表
+                        <div class="btn btn-primary float-right" th:onclick="pageMethod.showFormPoP(1)">添加部门</div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-hover">
+                            <table class="table table-hover" th:fragment="dep-list">
                                 <thead>
                                 <tr>
                                     <th>描述</th>
@@ -120,17 +121,21 @@
         </div>
         <div class="pop-form card">
             <div class="card">
-                <div class="card-header bg-light">
-                    部门设置
-                </div>
-                <form action="#" th:action="@{/createdep}" method="POST" th:object="${session.newDep}">
+                <form id="_sub-form" action="#" th:action="@{/createdep}" method="POST" th:object="${session.newDep}">
+                    <div class="card-header bg-light">
+                        部门设置
+                        <input type="submit" class="btn btn-primary" th:value="提交"
+                               onsubmit="return saveReport();"></input>
+                        <input type="cancel" class="btn btn-warning" th:value="取消"
+                               th:onclick="pageMethod.showFormPoP(0)"></input>
+                    </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-5">
                                 <label>部门名称</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">@</span>
+                                        <span class="input-group-text">#</span>
                                     </div>
                                     <input type="text" name="depname" th:value="*{depname}" class="form-control"
                                            placeholder="Username">
@@ -164,7 +169,8 @@
                                 </div>
                                 <label>部门类型</label>
                                 <div class="form-group input-group mb-3">
-                                    <select id="single-select" class="form-control">
+                                    <select id="single-select" class="form-control" th:value="*{deptype}"
+                                            name="deptype">
                                         <option th:value="1">维护</option>
                                         <option th:value="2">开发</option>
                                         <option th:value="3">销售</option>
@@ -174,7 +180,8 @@
                                 </div>
                                 <label>部门权限</label>
                                 <div class="form-group input-group mb-3">
-                                    <select id="multi-select" class="form-control" multiple="">
+                                    <select id="multi-select" class="form-control" multiple="" th:value="*{power}"
+                                            name="power">
                                         <option th:value="1">培训</option>
                                         <option th:value="2">任免</option>
                                         <option th:value="3">器材使用</option>
@@ -183,9 +190,6 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row mt-4 sub-botton pull-right ">
-                            <input type="submit" class="btn btn-primary" th:value="提交"></input>
                         </div>
                     </div>
                 </form>
@@ -209,6 +213,14 @@
             for (var x in data) {
 
             }
+        },
+        showFormPoP: function (data) {
+            if (1 == data) {
+                $(".pop-form").animate({top: 0}, 500);
+            } else {
+                $(".pop-form").animate({top: '300vh'}, 500);
+            }
+
         }
     }
     var ajaxMethod = {
@@ -232,6 +244,15 @@
         findGroupNameList: function (data) {
             ajaxutil.sendPostParam(rootUrl + "dep/getgroupajax", {depid: pageData.depid}, pageMethod.editGroupedit(data))
         },
+        saveReport: function () {
+            $("#_sub-form").ajaxSubmit(function (message) {
+                console.log(message);
+                // 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容
+            });
+            return false; // 必须返回false，否则表单会自己再做一次提交操作，并且页面跳转
+
+        }
+
     }
 
     $(function () {
@@ -249,10 +270,18 @@
         width: 45%;
         display: inline-block;
     }
-    .sub-botton .btn{
-       float: right;
+
+    .pop-form .btn {
+        margin: 0.1rem 0.6rem;
     }
 
+    .pop-form .btn-warning {
+        width: 4rem;
+    }
+
+    .pop-form .col-md-5 {
+        margin-left: 2.3rem;
+    }
 </style>
 </body>
 </html>

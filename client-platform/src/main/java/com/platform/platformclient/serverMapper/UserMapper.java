@@ -1,5 +1,6 @@
 package com.platform.platformclient.serverMapper;
 
+import com.platform.platformclient.entity.vo.DepartmentVO;
 import com.platform.platformclient.entity.vo.ShopVO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
@@ -25,4 +26,8 @@ public interface UserMapper {
 
     @PostMapping("/dep/findgroup")
     public String findDepGroupd(@RequestParam("depid") Integer depid);
+
+
+    @PostMapping("/dep/addDep")
+    public String addOneDepartment(@RequestBody DepartmentVO department) ;
 }
