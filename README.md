@@ -13,6 +13,8 @@
   -  server - data - shop : 人员管理服务供应商
   -  server - registry : 注册中心
   -  server - zuul - gateway : 路由中心
+  -  server - cache : redis and mongoDB
+  -  server - bus : 消息总线
   
   
   ## 技术点图谱
