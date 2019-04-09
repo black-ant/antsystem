@@ -1,4 +1,4 @@
-package com.serverdata.order.serverdataorder.service;
+package com.serverdata.order.serverdataorder.common;
 
 import com.serverdata.order.serverdataorder.common.utils.CommonUtils;
 import com.serverdata.order.serverdataorder.common.utils.RedisUtils;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * @Version 1.0
  **/
 @Service
-public class ApplicationService {
+public class ApplicationCache {
 
     @Autowired
     RedisUtils redisUtils;

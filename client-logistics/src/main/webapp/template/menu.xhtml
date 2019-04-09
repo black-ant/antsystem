@@ -3,14 +3,14 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui">
     <style>
-        .menu .ui-state-default {
+         .left-menu .ui-state-default {
             color: rgb(104, 106, 118);
             position: relative;
             font-size: 0.9em;
             background: #fff;
         }
 
-        .ui-panelmenu .ui-panelmenu-content {
+        .left-menu .ui-panelmenu .ui-panelmenu-content {
             padding: 0 0;
             border-top: 0;
             margin-top: 0;
@@ -21,13 +21,13 @@
             outline: 0;
         }
 
-        .menu .ui-state-default.ui-state-active {
+        .left-menu .ui-state-default.ui-state-active {
             background: linear-gradient(to left, #7c8ce4, #2196f3);
             border-left: 4px solid #7b4397;
             color: #fff;
         }
 
-        .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+        .left-menu .ui-state-hover,.left-menu .ui-widget-content .ui-state-hover,.left-menu .ui-widget-header .ui-state-hover,.left-menu .ui-state-focus,.left-menu .ui-widget-content .ui-state-focus,.left-menu .ui-widget-header .ui-state-focus {
             border-left: 4px solid #7b4397;
             background: linear-gradient(to left, #7c8ce4, #2196f3);
             font-weight: 300;
@@ -38,12 +38,12 @@
             transition-timing-function: ease;
         }
 
-        .menu .ui-state-default.ui-state-active a {
+        .left-menu .ui-state-default.ui-state-active a {
             font-family: Arial, sans-serif;
             font-size: 15.84px;
             font-weight: 300;
-            height: 30px;
-            line-height: 30px;
+            height: 40px;
+            line-height: 26px;
             color: #fff;;
             text-align: left;
             text-decoration-color: rgb(255, 255, 255);
@@ -57,18 +57,18 @@
             transition-timing-function: ease;
         }
 
-        .menu .ui-menu-list .ui-menuitem {
+        .left-menu .ui-menu-list .ui-menuitem {
             padding-left: 0px;
             background: #EEF5F9;
         }
 
-        .menu .ui-menu-list .ui-menuitem a {
-            padding-left: 50px;
-            height: 30px;
-            line-height: 30px;
-        }
+         .left-menu .ui-menu-list .ui-menuitem a {
+             padding-left: 50px;
+             height: 50px;
+             line-height: 37px;
+         }
     </style>
-    <h:form id="left-menu" class="menu">
+    <h:form id="left-menu" class="left-menu">
         <p:growl>
             <p:autoUpdate/>
         </p:growl>
@@ -80,14 +80,21 @@
                 <p:menuitem value="货品位置" url="/pages/inventory.xhtml"/>
             </p:submenu>
             <p:submenu label="人员调配">
-                <p:menuitem value="库管调配" url="/pages/storehouse.xhtml"/>
+                <p:menuitem value="库管调配" url="/pages/storehouse/storehouse.xhtml"/>
+                <p:menuitem value="库管设置" url="/pages/storehouse/storeuser.xhtml"/>
             </p:submenu>
             <p:separator/>
             <p:submenu label="仓库模块">
                 <p:menuitem value="库存信息" url="/pages/inventory.xhtml"/>
-                <p:menuitem value="仓库管理" url="/pages/storehouse.xhtml"/>
+                <p:menuitem value="仓库管理" url="/pages/storehouse/storehouse.xhtml"/>
                 <p:menuitem value="出入库记录" url="/pages/storehouse.xhtml"/>
                 <p:menuitem value="入库记录" url="/pages/storehouse.xhtml"/>
+            </p:submenu>
+            <p:submenu label="订单模块">
+                <p:menuitem value="订单信息" url="/pages/delorder/delorder.xhtml"/>
+            </p:submenu>
+            <p:submenu label="演示">
+                <p:menuitem value="组件常用方法" url="/pages/showtest/test.xhtml"/>
             </p:submenu>
         </p:panelMenu>
     </h:form>

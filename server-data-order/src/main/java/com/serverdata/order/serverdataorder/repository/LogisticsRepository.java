@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
  * @Version 1.0
  **/
 @Repository
-public interface LogisticsRepository extends JpaRepository<LogisticsOrder, Long> {
+public interface LogisticsRepository extends JpaRepository<LogisticsOrder, String> {
 
 }

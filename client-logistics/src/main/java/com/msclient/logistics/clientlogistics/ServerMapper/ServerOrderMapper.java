@@ -1,8 +1,10 @@
 package com.msclient.logistics.clientlogistics.ServerMapper;
 
 
+import com.msclient.logistics.clientlogistics.entity.StorehouseVO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -11,16 +13,21 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @Date 2019/3/22 23:20
  * @Version 1.0
  **/
-@FeignClient("server-order")
+@FeignClient(value = "server-order", fallback = ServerOrderFailBack.class)
 public interface ServerOrderMapper {
 
     @PostMapping("storehouse/findall")
-    String findStorehouseAll();
+    public String findStorehouseAll();
 
     @PostMapping("inventory/findall")
-    String findInventoryAll();
+    public String findInventoryAll();
 
     @PostMapping("info/infocarid")
-    String findCarInfoByCarId(@RequestParam("carid") Long carid);
+    public String findCarInfoByCarId(@RequestParam("carid") Long carid);
 
+    @PostMapping("logistics/findallorder")
+    public String findallLogisticsOrder(@RequestParam("type") String type);
+
+    @PostMapping("storehouse/saveone")
+    public String saveOneStorehouse(@RequestBody StorehouseVO storehouse);
 }

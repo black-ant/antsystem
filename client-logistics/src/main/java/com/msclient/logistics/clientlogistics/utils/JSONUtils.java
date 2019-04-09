@@ -1,7 +1,10 @@
 package com.msclient.logistics.clientlogistics.utils;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -14,7 +17,9 @@ import java.util.List;
 
 public class JSONUtils {
 
-    public static JSONObject toJsonObject(String jsons){
+    final static Logger logger = LoggerFactory.getLogger(JSONUtils.class);
+
+    public static JSONObject toJsonObject(String jsons) {
         return JSONObject.parseObject(jsons);
     }
 
@@ -27,12 +32,20 @@ public class JSONUtils {
     }
 
     public static <T> List<T> wrapperToList(String json, Class<T> beanClass) {
-        JSONObject obj =toJsonObject(json);
-        return obj.getJSONArray("result").toJavaList(beanClass);
+        logger.info("json :{}", json);
+        JSONObject obj = toJsonObject(json);
+        JSONArray jsonArray = null == obj.getJSONArray("result") ? new JSONArray() : obj.getJSONArray("result");
+        logger.info("obj :{}", obj.getJSONArray("result"));
+        return jsonArray.toJavaList(beanClass);
+    }
+
+    public static <T> T wrapperToBean(String json, Class<T> beanClass) {
+        JSONObject obj = toJsonObject(json);
+        return obj.getJSONObject("result").toJavaObject(beanClass);
     }
 
     public static <T> List<T> wrapperPKToList(String json, Class<T> beanClass) {
-        JSONObject obj =toJsonObject(json);
+        JSONObject obj = toJsonObject(json);
         return obj.getJSONArray("result").toJavaList(beanClass);
     }
 }

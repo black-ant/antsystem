@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
  * @Version 1.0
  **/
 @Repository
-public interface StorehouseRepository extends JpaRepository<Storehouse,Long> {
+public interface StorehouseRepository extends JpaRepository<Storehouse,Integer> {
 }

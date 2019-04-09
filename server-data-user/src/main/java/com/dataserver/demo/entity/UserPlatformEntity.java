@@ -8,6 +8,12 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author 10169
+ * @Description TODO
+ * @Date 2019/4/9 14:44
+ * @Version 1.0
+ **/
 @Data
 @Entity
 @Table(name = "user_platform")
@@ -15,7 +21,7 @@ public class UserPlatformEntity {
 
     @Id
     @GeneratedValue
-    private Long userid;
+    private Integer userid;
     private String username;
     @Size(max = 3)
     private String userage;
@@ -40,3 +46,4 @@ public class UserPlatformEntity {
         this.status = platformUserDTO.getStatus();
     }
 }
+

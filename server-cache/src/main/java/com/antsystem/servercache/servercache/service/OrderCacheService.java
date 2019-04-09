@@ -1,6 +1,9 @@
 package com.antsystem.servercache.servercache.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.antsystem.servercache.servercache.entity.LTTypeEnum;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -17,6 +20,7 @@ import java.util.List;
 @Service
 public class OrderCacheService extends BaseService {
 
+    Logger logger = LoggerFactory.getLogger(getClass());
 
     //===============系统测试简单代码
     public List<String> getOrderList(String order) {
@@ -37,16 +41,23 @@ public class OrderCacheService extends BaseService {
     }
 
     public List<String> findLogisticsOrderList(String type) {
-        HashMap<String,Object> map = new LinkedHashMap<>();
+        HashMap<String, Object> map = new LinkedHashMap<>();
+        List<String> list = new LinkedList<>();
         switch (type) {
-                case "ALL":
-                return mongodbUtil.getJSONList("LTorder");
+            case "ALL":
+                list = mongodbUtil.getJSONList("LTorder");
+                break;
             case "RUN":
-                map.put("type","1");
-                map.put("name","test");
-                return mongodbUtil.getJSONListByFilter("LTorder",map);
+                map.put("type", "1");
+                map.put("name", "test");
+                list = mongodbUtil.getJSONListByFilter("LTorder", map);
+                break;
+            default:
+                list = new LinkedList<>();
+
         }
-        return new LinkedList<>();
+        logger.info("return cache Logistics :{}", JSONObject.toJSONString(list));
+        return list;
     }
 
 

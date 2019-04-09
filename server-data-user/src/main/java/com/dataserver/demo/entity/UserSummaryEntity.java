@@ -19,7 +19,7 @@ public class UserSummaryEntity {
 
     @Id
     @GeneratedValue
-    private Long sn;
+    private Integer sn;
     private int userid;
     private String username;
     private String password;

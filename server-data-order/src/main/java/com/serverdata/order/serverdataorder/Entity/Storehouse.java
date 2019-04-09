@@ -16,7 +16,8 @@ import javax.persistence.*;
 public class Storehouse {
 
     @Id
-    private Long id;
+    @GeneratedValue
+    private Integer id;
     private String addressdetail;
     private String linkman;
     private String linkmobile;

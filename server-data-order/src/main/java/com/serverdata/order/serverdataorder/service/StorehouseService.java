@@ -22,4 +22,10 @@ public class StorehouseService {
     public List<Storehouse> findAll(){
         return storehouseRepository.findAll();
     }
+
+    public Storehouse save(Storehouse storehouse){
+        storehouse.setWtype("1");
+        storehouse.setIsactive("1");
+        return storehouseRepository.save(storehouse);
+    }
 }

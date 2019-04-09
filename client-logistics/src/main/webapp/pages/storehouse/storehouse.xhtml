@@ -1,0 +1,75 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template/pagetemplate.xhtml">
+    <ui:define name="head">
+        <title>库存信息</title>
+    </ui:define>
+
+    <ui:define name="form">
+        <p:layout style="min-width:400px;min-height:80vh;">
+            <p:layoutUnit position="north" size="100">
+                <p:commandButton class="btn btn-outline-primary" title="添加新仓库"
+                                 actionListener="#{storehouseView.initNewHouse}" process="@this" update="fm:dt"
+                                 oncomplete="PF('diaWarehouse').show()" partialSubmit="true"
+                                 styleClass="tpbtn">
+                </p:commandButton>
+            </p:layoutUnit>
+            <p:layoutUnit position="center" style="min-height:30rem;">
+                <p:dataTable id="dt" value="#{storehouseView.storeObjectlist}" var="item"
+                             style="text-align: center; margin-top: 20px;"
+                             rowIndexVar="riv"
+                             emptyMessage="无记录" widgetVar="compTable" selectionMode="single"
+                             selection="#{storehouseView.selectVO}" rowKey="#{item.id}"
+                             paginator="true" paginatorPosition="bottom" rows="12"
+                             currentPageReportTemplate="共{totalPages}页, {totalRecords}条记录"
+                             paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport}  跳转到页: {JumpToPageDropdown}">
+
+                    <p:ajax event="rowSelect" listener="#{storehouseView.onRowSelect}" process="@this"
+                            update="fm:dia01"/>
+
+                    <p:column headerText="NO" width="30">
+                        <h:outputLabel value="#{riv+1}"/>
+                    </p:column>
+                    <p:column headerText="编号" width="80">
+                        <h:outputText value="#{item.id}"/>
+                    </p:column>
+                    <p:column headerText="详细地址" width="120">
+                        <h:outputText value="#{item.addressdetail}"/>
+                    </p:column>
+                    <p:column headerText="联系人" width="120">
+                        <h:outputText value="#{item.linkman}"/>
+                    </p:column>
+                    <p:column headerText="联系电话" width="120">
+                        <h:outputText value="#{item.linkmobile}"/>
+                    </p:column>
+                </p:dataTable>
+            </p:layoutUnit>
+        </p:layout>
+        <p:dialog id="dia01" widgetVar="diaWarehouse">
+            <p:panel>
+                <p:outputLabel value="添加仓库"/>
+                <p:commandButton value="保存" type="submit" actionListener="#{storehouseView.addStorehouse}"
+                                 update=":fm:dt" style="margin-left: 15px;"/>
+            </p:panel>
+            <p:panel>
+                <h:panelGrid columns="4" cellpadding="5">
+
+                    <h:outputLabel value="详细地址:"/>
+                    <p:inputText id="dname" label="dname" value="#{storehouseView.newStorehouse.addressdetail}"
+                                 required="true"/>
+
+                    <h:outputLabel value="联系人:"/>
+                    <p:inputText id="linkman" label="linkman" value="#{storehouseView.newStorehouse.linkman}"
+                                 required="true"/>
+
+                    <h:outputLabel value="联系电话:"/>
+                    <p:inputText id="mobile" label="mobile" maxlength="11"
+                                 value="#{storehouseView.newStorehouse.linkmobile}" required="true"/>
+                </h:panelGrid>
+            </p:panel>
+        </p:dialog>
+    </ui:define>
+</ui:composition>

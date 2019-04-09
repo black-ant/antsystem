@@ -7,8 +7,7 @@ import com.rabbitmq.client.Channel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
-import org.springframework.amqp.rabbit.annotation.RabbitHandler;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.amqp.rabbit.annotation.*;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -69,5 +68,17 @@ public class MsgReceiver {
         } catch (IOException e) {
             // TODO 如果报错了,那么我们可以进行容错处理,比如转移当前消息进入其它队列
         }
+    }
+
+    //使用@RabbitListener监听指定队列、指定exchange、指定routingKey的消息
+    //同时@RabbitListener有建立队列、exchange、routingKey的功能
+    @RabbitListener(
+            bindings = @QueueBinding(
+                    value = @Queue(value = "editCatalog", durable = "true"),
+                    exchange = @Exchange(value = "catalogExchange", type = "topic", durable = "true"),
+                    key = "editCatalogKey")
+    )
+    public void receiveMessage(String message) throws Exception {
+        logger.info("msg is :{}", message);
     }
 }

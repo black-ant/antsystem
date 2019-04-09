@@ -113,6 +113,7 @@ public class GoodsService {
                 itemMap.put("skuid", item.getSkuid());
             } else {
                 itemMap = new HashMap<String, Object>();
+                logger.info("item.getSkukeyid() :{}---item.getSkuvalueid():{}",item.getSkukeyid(),item.getSkuvalueid());
                 itemMap.put(application.getItemkeyMap().get(item.getSkukeyid()).getName(), application.getItemvalueMap().get(item.getSkuvalueid()).getValue());
                 map.put(item.getSkuid(), itemMap);
             }

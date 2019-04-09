@@ -1,0 +1,140 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template/pagetemplate.xhtml">
+    <ui:define name="head">
+        <title>库存信息</title>
+    </ui:define>
+    <ui:define name="form">
+        <p:panel id="f1" styleClass="banner">
+            <p:outputLabel value="仓库员工设置" styleClass="title" style="font-weight: bold;"/>
+            <p:commandButton value="添加员工" actionListener="#{storehouseView.approve}" style="margin-left: 30px;"/>
+            <p:selectOneMenu value="#{storehouseView.selectStroehouse}" immediate="true" style="margin-left: 15px;"
+                             filterMatchMode="contains" filter="true">
+                <f:selectItem itemLabel="选择仓库" itemValue="" noSelectionOption="false"/>
+                <f:selectItems value="#{storehouseView.storelist}"/>
+            </p:selectOneMenu>
+            <p:commandButton value="查询" actionListener="#{storehouseView.findStoreUser}" update="_userlist"
+                             process="f1"/>
+        </p:panel>
+
+        <!--<p:panel>-->
+            <!--<h:panelGrid columns="4">-->
+                <!--<p:panel id="p2">-->
+                    <!--<p:commandButton value="保存"  actionListener="#{setCondistributorShop.editShop}" update="fm" process="p2"-->
+                                     <!--style="margin-left: 10px;"/>-->
+                    <!--<h:panelGrid columns="3" cellpadding="5">-->
+                        <!--<p:outputLabel value="仓库:" style="margin-right: 31px;"/>-->
+                        <!--<p:inputText id="cname" value="#{setCondistributorShop.shop.chainshopName}"-->
+                                     <!--style="width:145px; " rendered="#{!setCondistributorShop.condisplay}"/>-->
+                        <!--<p:selectOneMenu id="shopdistributid" label="shopdistributid"-->
+                                         <!--value="#{setCondistributorShop.shop.distributid}"-->
+                                         <!--disabled="#{setCondistributorShop.condisplay}" effect="fade" filter="true"-->
+                                         <!--style="width:125px;" required="true">-->
+                            <!--<p:ajax listener="#{setCondistributorShop.SelectWarehouseid}"-->
+                                    <!--update="fm:cname,fm:shopWarehouseId"/>-->
+                            <!--<f:selectItem itemLabel="选择经销商" itemValue="未选"/>-->
+                            <!--<f:selectItems value="#{setCondistributorShop.distributidList}"/>-->
+                        <!--</p:selectOneMenu>-->
+                    <!--</h:panelGrid>-->
+
+                    <!--&lt;!&ndash;<h:panelGrid columns="4" cellpadding="5">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<p:outputLabel value="仓库ID:"/>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<p:selectOneMenu id="shopWarehouseId" label="shopWarehouseId"&ndash;&gt;-->
+                                         <!--&lt;!&ndash;value="#{setCondistributorShop.shop.warehouseid}" effect="fade" filter="true"&ndash;&gt;-->
+                                         <!--&lt;!&ndash;style="width:125px" required="true">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<f:selectItem itemLabel="选择仓库ID:" itemValue="未选"/>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<f:selectItems value="#{setCondistributorShop.activeWarehouse}"/>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</p:selectOneMenu>&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<h:outputLabel for="mall" value="卖场:"/>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<p:selectOneMenu id="mall" effect="fade" filter="true" filterMatchMode="contains"&ndash;&gt;-->
+                                         <!--&lt;!&ndash;value="#{setCondistributorShop.shop.mallid}" style="width:125px">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<p:ajax listener="#{setCondistributorShop.Selectlevel}" update="level"/>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<f:selectItem itemLabel="选择卖场:" itemValue="未选"/>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<f:selectItems value="#{setCondistributorShop.mallim}"/>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</p:selectOneMenu>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<h:outputLabel for="level" value="等级:"/>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<p:selectOneMenu id="level" effect="fade" filter="true" filterMatchMode="contains"&ndash;&gt;-->
+                                         <!--&lt;!&ndash;value="#{setCondistributorShop.shop.levelid}" style="width:125px">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<f:selectItem itemLabel="选择等级:" itemValue="未选"/>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<f:selectItems value="#{setCondistributorShop.levelim}"/>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</p:selectOneMenu>&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<h:outputLabel for="shopName" value="商铺名称:"/>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<p:inputText id="shopName" label="shopName" value="#{setCondistributorShop.shop.shopname}"&ndash;&gt;-->
+                                     <!--&lt;!&ndash;readonly="#{setCondistributorShop.display}" style="width: 145px;" required="true"/>&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<h:outputLabel for="shopLinkman" value="商铺联系人:"/>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<p:inputText id="shopLinkman" label="shopLinkman"&ndash;&gt;-->
+                                     <!--&lt;!&ndash;value="#{setCondistributorShop.shop.shoplinkman}" required="true"&ndash;&gt;-->
+                                     <!--&lt;!&ndash;style="width: 145px;">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<f:validateLength maximum="12"/>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</p:inputText>&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<h:outputLabel for="shopMobile" value="商铺联系电话:"/>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<p:inputText id="shopMobile" maxlength="12" label="shopMobile"&ndash;&gt;-->
+                                     <!--&lt;!&ndash;value="#{setCondistributorShop.shop.shopmobile}" style="width: 145px;"&ndash;&gt;-->
+                                     <!--&lt;!&ndash;required="true">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<f:validateLength minimum="1" maximum="15"/>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</p:inputText>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</h:panelGrid>&ndash;&gt;-->
+                <!--&lt;!&ndash;</p:panel>&ndash;&gt;-->
+            <!--&lt;!&ndash;</h:panelGrid>&ndash;&gt;-->
+
+        <!--</p:panel>-->
+        <p:dataTable id="_userlist" var="user" value="#{storehouseView.userVOS}" widgetVar="user"
+                     selectionMode="single" selection="#{storehouseView.selectUser}" rowKey="#{user.userid}"
+                     paginator="true" emptyMessage="没有数据" paginatorPosition="bottom" rows="10"
+                     paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport} 跳转到页: {JumpToPageDropdown}"
+                     currentPageReportTemplate="共{totalPages}页, {totalRecords}条记录">
+            <p:ajax event="rowSelect" listener="#{storehouseView.onRowSelect}" process="@this" update="fm"/>
+
+            <p:column headerText="职位" style="width: 150px;">
+                <h:outputText value="#{user.systemname}"/>
+            </p:column>
+
+            <p:column headerText="责任" style="width:200px;">
+                <h:outputText value="#{user.systemdesc}"/>
+            </p:column>
+
+            <p:column headerText="年龄" style="width: 80px;">
+                <h:outputText value="#{user.userage}岁"/>
+            </p:column>
+
+            <p:column headerText="名称" style="width: 100px;">
+                <h:outputText value="#{user.username}"/>
+            </p:column>
+
+            <p:column headerText="性别" style="width: 180px;">
+                <h:outputText value="#{user.usersex?'男':'女'}"/>
+            </p:column>
+
+            <p:column headerText="状态" style="width: 120px;">
+                <h:outputText value="#{user.status==1?'在职':'离职'}"/>
+            </p:column>
+            <p:column headerText="入驻时间" style="width: 100px;">
+                <h:outputText value="#{user.createdate}">
+                    <f:convertDateTime pattern="YYYY-MM-dd"/>
+                </h:outputText>
+            </p:column>
+            <p:column headerText="工期" style="width: 100px;">
+                <h:outputText value="#{user.endDate}">
+                    <f:convertDateTime pattern="YYYY-MM-dd"/>
+                </h:outputText>
+            </p:column>
+            <p:column headerText="工期" style="width: 100px;">
+                <h:outputText value="#{user.endDate}">
+                    <f:convertDateTime pattern="YYYY-MM-dd"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="width:42px;text-align: center">
+                <p:commandButton update=":fm:_userlist"  value="离职" title="View">
+                    <f:setPropertyActionListener value="#{user}" target="#{storehouseView.changeUser}" />
+                </p:commandButton>
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+</ui:composition>

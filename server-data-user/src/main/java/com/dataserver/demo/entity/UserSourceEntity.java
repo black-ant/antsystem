@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * @author 10169
- * @Description TODO
+ * @Description 外部兼职员工 , 通过提现收益
  * @Date 2019/1/16 21:41
  * @Version 1.0
  **/
@@ -19,7 +19,7 @@ public class UserSourceEntity {
 
     @Id
     @GeneratedValue
-    private Long userid;
+    private Integer userid;
     private String username;
     @Size(max = 3)
     private String userage;

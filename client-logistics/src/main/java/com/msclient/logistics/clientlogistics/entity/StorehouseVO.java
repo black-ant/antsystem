@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 public class StorehouseVO {
 
-    private Long id;
+    private Integer id;
     private String addressdetail;
     private String linkman;
     private String linkmobile;
@@ -24,7 +24,7 @@ public class StorehouseVO {
     public StorehouseVO() {
     }
 
-    public StorehouseVO(Long id, String addressdetail, String linkman, String linkmobile, double addresslatitude, double addresslongitude, String wtype, String isactive) {
+    public StorehouseVO(Integer id, String addressdetail, String linkman, String linkmobile, double addresslatitude, double addresslongitude, String wtype, String isactive) {
         this.id = id;
         this.addressdetail = addressdetail;
         this.linkman = linkman;

@@ -1,8 +1,9 @@
-body{
+body {
     padding: 10px 25px 3px 4px;
     background: #EEF5F9;
 }
-#left-menu{
+
+#left-menu {
     display: inline-block;
     width: 17rem;
     margin-right: 0rem;
@@ -10,12 +11,14 @@ body{
     height: 100vh;
     background: #fff;
 }
-#fm{
+
+#fm {
     display: inline-block;
     margin: 0 0 0 1rem;
     width: calc(100% - 18rem);
 }
-.topmenu{
+
+.topmenu {
     display: inline-block;
     width: 100%;
     background: linear-gradient(to left, #7b4397, #2196f3);
@@ -23,7 +26,8 @@ body{
     padding-bottom: 15px;
     color: #fff;
 }
-.topmenu .top-left{
+
+.topmenu .top-left {
     display: inline-block;
     float: left;
     color: #fff;
@@ -31,20 +35,24 @@ body{
     background: none;
     border: none;
 }
+
 .topmenu .ui-panel .ui-panel-content {
     padding: 0 1em .5em 1em;
 }
-.logo-class{
+
+.logo-class {
     display: inline-block;
     width: 5rem;
     height: 2rem;
     float: left;
 }
-.top-left-title{
+
+.top-left-title {
     display: inline-block;
     width: 50%;
 }
-.topmenu .top-right{
+
+.topmenu .top-right {
     display: inline-block;
     float: right;
     width: 50%;
@@ -52,21 +60,37 @@ body{
     border: none;
     color: #fff;
     background: none;
-}.topmenu .ui-outputpanel{
+}
+
+.topmenu .ui-outputpanel {
     color: #fff;
 }
-.topmenu .top-right .top-menu-item{
+
+.topmenu .top-right .top-menu-item {
     display: inline-block;
     width: 3rem;
     text-align: right;
 }
-.map-popup-out{
+
+.map-popup-out {
     min-height: 40rem;
     min-width: 60rem;
 }
-.map-popup-out .ui-dialog-content{
+
+.map-popup-out .ui-dialog-content {
     height: 16rem;
 }
-.map-popup{
+
+.map-popup {
     height: 35rem;
+}
+
+.ui-button-text {
+    background-color: transparent;
+    background-image: none;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background-color: #fff;
+    text-shadow: none;
 }

@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @Version 1.0
  **/
 @Service
-public class TradeService {
+public class TradeService extends BaseService{
 
     @Autowired
     TradeRepository tradeRepository;
@@ -24,5 +24,6 @@ public class TradeService {
     public void saveTradeOrder(TradeVO tradeVO){
         TradeOrder tradeOrder = new TradeOrder(tradeVO,"10000001"+ DateUtil.getStringYYMMDD());
         tradeRepository.save(tradeOrder);
+        serverOrderMapper.createOrder(tradeOrder);
     }
 }

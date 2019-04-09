@@ -1,6 +1,8 @@
 package com.msclient.logistics.clientlogistics.service;
 
+import com.msclient.logistics.clientlogistics.ServerMapper.ServerCacheMapper;
 import com.msclient.logistics.clientlogistics.ServerMapper.ServerOrderMapper;
+import com.msclient.logistics.clientlogistics.ServerMapper.ServerUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -13,5 +15,8 @@ public abstract  class BaseService {
 
     @Autowired
     ServerOrderMapper serverOrderMapper;
-
+    @Autowired
+    ServerUserMapper userMapper;
+    @Autowired
+    ServerCacheMapper cacheMapper;
 }

@@ -1,5 +1,6 @@
 package com.antsystem.serverbus.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.antsystem.serverbus.config.RabbitConfig;
 import com.antsystem.serverbus.entity.Book;
 import com.antsystem.serverbus.service.MsgProducer;
@@ -24,6 +25,7 @@ public class SendController {
     public SendController(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
+
     @Autowired
     MsgProducer msgProducer;
 
@@ -40,6 +42,12 @@ public class SendController {
 
     @GetMapping("sendQueen")
     public void sendQueen() {
+        msgProducer.sendMsg("测试queen");
+    }
+
+    @GetMapping("sendMSG")
+    public void sendMsg() {
+        rabbitTemplate.convertAndSend("catalogExchange", "editCatalogKey", JSON.toJSONString("{name:gang}"));
         msgProducer.sendMsg("测试queen");
     }
 }

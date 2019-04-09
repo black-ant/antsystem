@@ -3,6 +3,8 @@ package com.serverdata.order.serverdataorder.controller;
 import com.serverdata.order.serverdataorder.Entity.Inventory;
 import com.serverdata.order.serverdataorder.common.response.Wrapper;
 import com.serverdata.order.serverdataorder.service.InventoryService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +22,7 @@ import java.util.List;
 @RestController
 @RequestMapping("inventory")
 public class InventoryController extends BaseController {
-
+    Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     InventoryService inventoryService;
 

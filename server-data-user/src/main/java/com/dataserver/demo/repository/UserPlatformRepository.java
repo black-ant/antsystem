@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @Repository
-public interface UserPlatformRepository extends JpaRepository<UserPlatformEntity,Long> {
+public interface UserPlatformRepository extends JpaRepository<UserPlatformEntity,Integer> {
 
     List<UserPlatformEntity> findByStatusNot(String status);
 

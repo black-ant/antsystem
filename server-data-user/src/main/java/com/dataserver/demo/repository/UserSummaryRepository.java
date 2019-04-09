@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
  * @Version 1.0
  **/
 @Repository
-public interface UserSummaryRepository extends JpaRepository<UserSummaryEntity,Long> {
+public interface UserSummaryRepository extends JpaRepository<UserSummaryEntity,Integer> {
 
     public UserSummaryEntity findByUserid(String userid);
 }
