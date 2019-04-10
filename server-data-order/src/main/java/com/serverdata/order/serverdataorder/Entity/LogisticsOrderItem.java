@@ -21,7 +21,7 @@ public class LogisticsOrderItem {
     @Id
     @GeneratedValue
     private Integer id;
-    @Column(columnDefinition = "int(3) default 0 comment '配送总单'")
+    @Column(columnDefinition = "int(10) default 0 comment '配送总单'")
     private String lid;
 
     @Column(columnDefinition = "varchar(25) default 0 comment '店铺ID'")

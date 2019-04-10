@@ -85,7 +85,8 @@ public class LogisticsOrder {
     @Column(columnDefinition = "decimal(9,2) default NULL comment ' 签收时间'")
     private Date signTime;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name = "lid")
     List<LogisticsOrderItem> items;
 
     public LogisticsOrder() {

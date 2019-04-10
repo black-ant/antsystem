@@ -51,16 +51,16 @@ public class TestController {
     }
 
     @GetMapping("getCache")
-    public List<String> getCachebByTest(@RequestParam("key") String param) {
+    public List<JSONObject> getCachebByTest(@RequestParam("key") String param) {
         return userCacheService.getCacheTest(param);
     }
 
     @GetMapping("getCacheList")
-    public List<String> getCachebList(@RequestParam("table") String table) {
+    public List<JSONObject> getCachebList(@RequestParam("table") String table) {
         return orderCacheService.getOrderList(table);
     }
     @GetMapping("getCacheByType")
-    public List<String> getCacheByType(@RequestParam("type") String type) {
+    public List<JSONObject> getCacheByType(@RequestParam("type") String type) {
         return orderCacheService.findLogisticsOrderList(type);
     }
 

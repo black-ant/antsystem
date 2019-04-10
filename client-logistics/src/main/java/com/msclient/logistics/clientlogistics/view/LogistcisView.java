@@ -3,6 +3,7 @@ package com.msclient.logistics.clientlogistics.view;
 import com.alibaba.fastjson.JSONObject;
 import com.msclient.logistics.clientlogistics.common.AbstractView;
 import com.msclient.logistics.clientlogistics.entity.Info;
+import com.msclient.logistics.clientlogistics.entity.LogisticsItemVO;
 import com.msclient.logistics.clientlogistics.entity.LogisticsOrderVO;
 import com.msclient.logistics.clientlogistics.service.InfoService;
 import com.msclient.logistics.clientlogistics.service.LogisticsOrderService;
@@ -30,6 +31,8 @@ public class LogistcisView extends AbstractView {
     @Autowired
     private LogisticsOrderService logisService;
     private LogisticsOrderVO logisVO;
+    private LogisticsOrderVO selectedDel;
+    private LogisticsItemVO selectedDelitems;
     private List<LogisticsOrderVO> list;
 
     @Override
@@ -57,6 +60,12 @@ public class LogistcisView extends AbstractView {
      * 查询指定 id 信息
      */
     public void selectOne(Integer id) {
+
+    }
+    /**
+     * 查询指定 订单的货品信息
+     */
+    public void selectedDel() {
 
     }
 

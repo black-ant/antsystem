@@ -1,6 +1,7 @@
 package com.antsystem.servercache.servercache.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.antsystem.servercache.servercache.common.CacheResponse;
 import com.antsystem.servercache.servercache.entity.TestEntity;
 import com.antsystem.servercache.servercache.repository.TestRepository;
 import com.antsystem.servercache.servercache.service.OrderCacheService;
@@ -21,7 +22,7 @@ import java.util.Random;
  * @Version 1.0
  **/
 @RestController
-public class OrderController {
+public class OrderController extends CacheResponse {
 
     @Autowired
     OrderCacheService orderCacheService;
@@ -33,7 +34,8 @@ public class OrderController {
     }
 
     @GetMapping("getOrderList")
-    public List<String> getOrderList(@RequestParam("type") String type) {
-        return orderCacheService.findLogisticsOrderList(type);
+    public List<Object> getOrderList(@RequestParam("type") String type) {
+//        return orderCacheService.findLogisticsOrderList(type);
+        return cacheBack(orderCacheService.findLogisticsOrderListDBO());
     }
 }

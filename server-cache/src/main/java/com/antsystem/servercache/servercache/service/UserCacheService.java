@@ -1,5 +1,6 @@
 package com.antsystem.servercache.servercache.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.antsystem.servercache.servercache.entity.TestEntity;
 import com.antsystem.servercache.servercache.repository.TestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,11 +34,11 @@ public class UserCacheService extends BaseService {
         return "ok";
     }
 
-    public List<String> getCacheTest(String key) {
+    public List<JSONObject> getCacheTest(String key) {
         return mongodbUtil.getJSONById("test", key);
     }
 
-    public List<String> getCacheByType(String type) {
+    public List<JSONObject> getCacheByType(String type) {
         return mongodbUtil.getJSONById("test", type);
     }
 

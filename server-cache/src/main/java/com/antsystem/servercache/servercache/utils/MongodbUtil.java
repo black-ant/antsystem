@@ -1,5 +1,7 @@
 package com.antsystem.servercache.servercache.utils;
 
+import com.alibaba.fastjson.JSONObject;
+import com.mongodb.DBObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +9,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -60,27 +61,71 @@ public class MongodbUtil {
     /**
      * 查询指定表的字符串
      */
-    public List<String> getJSONById(String table, String key) {
-        return mongoTemplate.find(new Query(Criteria.where("id").is(key)), String.class, table);
+    public List<JSONObject> getJSONById(String table, String key) {
+        return mongoTemplate.find(new Query(Criteria.where("id").is(key)), JSONObject.class, table);
     }
 
     /**
      * 查询指定表的所有数据
      */
-    public List<String> getJSONList(String table) {
-        return mongoTemplate.find(new Query(), String.class, table);
+    public List<JSONObject> getJSONList(String table) {
+        return mongoTemplate.find(new Query(), JSONObject.class, table);
     }
+
 
     /**
      * 查询指定表的所有数据
+     *
+     * @Return List<JSONObject>
      */
-    public List<String> getJSONListByFilter(String table, Map<String, Object> filterMap) {
+    public List<JSONObject> getJSONListByFilter(String table, Map<String, Object> filterMap) {
         List<Criteria> list = new ArrayList<Criteria>();
         filterMap.keySet().forEach(key -> {
             logger.info("key is :{}--value is:{}", key, filterMap.get(key));
             list.add(Criteria.where(key).is(filterMap.get(key)));
         });
         // 查看源码可知 andOperator 可接受一个不限长度的
-        return mongoTemplate.find(new Query(new Criteria().andOperator(list.toArray(new Criteria[0]))), String.class, table);
+        return mongoTemplate.find(new Query(new Criteria().andOperator(list.toArray(new Criteria[0]))), JSONObject.class, table);
     }
+
+
+    /**
+     * 查询指定表的字符串
+     *
+     * @Return List<DBObject>
+     */
+    public List<DBObject> getJSONByIdDBO(String table, String key) {
+        return mongoTemplate.find(new Query(Criteria.where("id").is(key)), DBObject.class, table);
+    }
+
+    /**
+     * 查询指定表的所有数据
+     *
+     * @Return List<DBObject>
+     */
+    public List<DBObject> getJSONListDBO(String table) {
+        return mongoTemplate.find(new Query(), DBObject.class, table);
+    }
+
+    /**
+     * 查询指定表的所有数据
+     *
+     * @Return List<DBObject>
+     */
+    public List<DBObject> getJSONListByFilterDBO(String table, Map<String, Object> filterMap) {
+        List<Criteria> list = new ArrayList<Criteria>();
+        filterMap.keySet().forEach(key -> {
+            logger.info("key is :{}--value is:{}", key, filterMap.get(key));
+            list.add(Criteria.where(key).is(filterMap.get(key)));
+        });
+        // 查看源码可知 andOperator 可接受一个不限长度的
+        return mongoTemplate.find(new Query(new Criteria().andOperator(list.toArray(new Criteria[0]))), DBObject.class, table);
+    }
+
+    /**
+     * DBObject To JSONObject
+     */
+//    public List<JSONObject> dbToJson(String table) {
+//        return mongoTemplate.find(new Query(), DBObject.class, table);
+//    }
 }

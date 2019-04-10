@@ -2,6 +2,7 @@ package com.antsystem.servercache.servercache.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.antsystem.servercache.servercache.entity.LTTypeEnum;
+import com.mongodb.DBObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -23,11 +24,11 @@ public class OrderCacheService extends BaseService {
     Logger logger = LoggerFactory.getLogger(getClass());
 
     //===============系统测试简单代码
-    public List<String> getOrderList(String order) {
+    public List<JSONObject> getOrderList(String order) {
         return mongodbUtil.getJSONList("antcache");
     }
 
-    public List<String> getOrderListById(String order, String key) {
+    public List<JSONObject> getOrderListById(String order, String key) {
         return mongodbUtil.getJSONById(order, key);
     }
 
@@ -40,9 +41,9 @@ public class OrderCacheService extends BaseService {
         }
     }
 
-    public List<String> findLogisticsOrderList(String type) {
+    public List<JSONObject> findLogisticsOrderList(String type) {
         HashMap<String, Object> map = new LinkedHashMap<>();
-        List<String> list = new LinkedList<>();
+        List<JSONObject> list;
         switch (type) {
             case "ALL":
                 list = mongodbUtil.getJSONList("LTorder");
@@ -57,6 +58,12 @@ public class OrderCacheService extends BaseService {
 
         }
         logger.info("return cache Logistics :{}", JSONObject.toJSONString(list));
+        return list;
+    }
+
+    public List<DBObject> findLogisticsOrderListDBO() {
+        List<DBObject> list = mongodbUtil.getJSONListDBO("LTorder");
+        logger.info("List is :{}", JSONObject.toJSONString(list));
         return list;
     }
 

@@ -33,7 +33,7 @@ public class LogisticsOrderService extends BaseService {
     public List<LogisticsOrderVO> findAllByCache() {
         logger.info("查询订单 cache 缓存：>>>>>>");
         List<String> wrapper = cacheMapper.getOrderList("ALL");
-        logger.info("查询订单 cache 缓存结果：{}", JSONObject.toJSONString(wrapper));
+        logger.info("查询订单 cache 缓存结果：{}", wrapper);
         List<LogisticsOrderVO> list = new LinkedList<>();
         for (String sjosn : wrapper) {
             list.add(JSONObject.parseObject(sjosn).toJavaObject(LogisticsOrderVO.class));

@@ -10,8 +10,9 @@
 
     <ui:define name="form">
         <p:layout style="min-width:400px;min-height:80vh;">
-            <p:layoutUnit position="north" size="100" >
-                 <p:commandButton class="btn btn-outline-primary" value="测试" id="nonAjax" actionListener="#{logistcisView.findAllDelOrder}"
+            <p:layoutUnit position="north" size="100">
+                 <p:commandButton class="btn btn-outline-primary" value="查询" id="nonAjax"
+                                  actionListener="#{logistcisView.findAllDelOrder}"
                                   ajax="false"/>
             </p:layoutUnit>
             <p:layoutUnit position="center" style="min-height:30rem;">
@@ -25,30 +26,84 @@
                              paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport}  跳转到页: {JumpToPageDropdown}">
 
                     <p:ajax event="rowSelect" listener="#{logistcisView.onRowSelect}" process="@this"
-                            update="fm:dia01" />
+                            update="fm:dia01"/>
 
                     <p:column headerText="NO" width="30">
                         <h:outputLabel value="#{riv+1}"/>
                     </p:column>
                     <p:column headerText="编号" width="80">
-                        <h:outputText value="#{item.procode}"/>
+                        <h:outputText value="#{item.id}"/>
                     </p:column>
-                    <!--<p:column headerText="详细地址" width="120">-->
-                        <!--<h:outputText value="#{item.outnum}"/>-->
-                    <!--</p:column>-->
-                    <!--<p:column headerText="联系人" width="120">-->
-                        <!--<h:outputText value="#{item.insnum}"/>-->
-                    <!--</p:column>-->
+                    <p:column headerText="地址" width="120">
+                        <h:outputText value="#{item.delAddress} #{item.delAddressDetail}"/>
+                    </p:column>
+                    <p:column headerText="联系人" width="120">
+                        <h:outputText value="#{item.delName}"/>
+                    </p:column>
                     <p:column headerText="联系电话" width="120">
-                        <h:outputText value="#{item.buyerMessage}"/>
+                        <h:outputText value="#{item.delMobile}"/>
+                    </p:column>
+                    <p:column headerText="货号总述" width="120">
+                        <h:outputText value="#{item.goodscode}"/>
+                    </p:column>
+                    <p:column headerText="货品数量" width="120">
+                        <h:outputText value="#{item.num}"/>
+                    </p:column>
+                    <p:column headerText="更新时间" width="120">
+                        <h:outputText value="#{item.updateTime}">
+                            <f:convertDateTime pattern="YYYY-MM-dd"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column style="width:32px;text-align: center">
+                        <p:commandButton update=":fm:dia01" oncomplete="PF('carDialog').show()" icon="pi pi-search" title="View">
+                            <f:setPropertyActionListener value="#{item}" target="#{logistcisView.selectedDel}" />
+                        </p:commandButton>
                     </p:column>
                 </p:dataTable>
             </p:layoutUnit>
         </p:layout>
 
 
-        <p:dialog id="dia01" widgetVar="companyDialog">
+        <p:dialog id="dia01" widgetVar="carDialog">
+            <p:dataTable id="dtg" value="#{logistcisView.selectedDel.items}" var="item"
+                         style="text-align: center; margin-top: 20px;"
+                         rowIndexVar="riv"
+                         emptyMessage="无记录" widgetVar="compTable" selectionMode="single"
+                         selection="#{logistcisView.selectedDelitems}" rowKey="#{item.id}"
+                         paginator="true" paginatorPosition="bottom" rows="12"
+                         currentPageReportTemplate="共{totalPages}页, {totalRecords}条记录"
+                         paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport}  跳转到页: {JumpToPageDropdown}">
 
+                <p:ajax event="rowSelect" listener="#{logistcisView.onRowSelect}" process="@this"
+                        update="fm:dia01"/>
+
+                <p:column headerText="NO" width="30">
+                    <h:outputLabel value="#{riv+1}"/>
+                </p:column>
+                <p:column headerText="编号" width="80">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                <p:column headerText="标题" width="120">
+                    <h:outputText value="#{item.title} "/>
+                </p:column>
+                <p:column headerText="配送费" width="120">
+                    <h:outputText value="#{item.transfee}"/>
+                </p:column>
+                <p:column headerText="类型" width="120">
+                    <h:outputText value="#{item.itemType}"/>
+                </p:column>
+                <p:column headerText="数量" width="120">
+                    <h:outputText value="#{item.num}"/>
+                </p:column>
+                <p:column headerText="备注" width="120">
+                    <h:outputText value="#{item.buyerMessages}"/>
+                </p:column>
+                <p:column headerText="更新时间" width="120">
+                    <h:outputText value="#{item.createTime}">
+                        <f:convertDateTime pattern="YYYY-MM-dd"/>
+                    </h:outputText>
+                </p:column>
+            </p:dataTable>
         </p:dialog>
     </ui:define>
 </ui:composition>
