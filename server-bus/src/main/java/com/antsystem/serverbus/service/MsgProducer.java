@@ -44,8 +44,10 @@ public class MsgProducer implements RabbitTemplate.ConfirmCallback {
         rabbitTemplate.convertAndSend(RabbitConfig.EXCHANGE_A, RabbitConfig.ROUTINGKEY_A, content, correlationId);
     }
 
+
     /**
      * 回调
+     * 通过继承 ConfirmCallback 确保消息已经成功发送
      */
     @Override
     public void confirm(CorrelationData correlationData, boolean ack, String cause) {
